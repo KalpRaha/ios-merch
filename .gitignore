@@ -13,7 +13,7 @@ Carthage/
 *.xcarchive
 *.log
 .DS_Store
-GoogleInfo.plist
+QuickveeApp/Auth/GoogleService-Info.plist
 *.xcworkspace/xcuserdata/
 *.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
 
