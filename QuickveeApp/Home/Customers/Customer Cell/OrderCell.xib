@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Manrope-Bold.ttf">
+            <string>Manrope-Bold</string>
+        </array>
+        <array key="Manrope-ExtraBold.ttf">
+            <string>Manrope-ExtraBold</string>
+        </array>
+        <array key="Manrope-Medium.ttf">
+            <string>Manrope-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="9V5-Jd-io4" customClass="OrderCell" customModule="QuickveeApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="444" height="117"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hTV-hw-4ew" userLabel="contentView">
+                    <rect key="frame" x="0.0" y="10" width="444" height="97"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="6634DOSIANN112" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqq-dd-HYt">
+                            <rect key="frame" x="20" y="18" width="187" height="21"/>
+                            <fontDescription key="fontDescription" name="Manrope-Medium" family="Manrope" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="May 6, 2023 -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9L-nX-7dX">
+                            <rect key="frame" x="20" y="45" width="74.333333333333329" height="21"/>
+                            <fontDescription key="fontDescription" name="Manrope-Medium" family="Manrope" pointSize="12"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$50.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JzS-U9-MMn">
+                            <rect key="frame" x="217" y="9.9999999999999982" width="50.333333333333314" height="19.333333333333329"/>
+                            <fontDescription key="fontDescription" name="Manrope-ExtraBold" family="Manrope" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-50.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s06-im-fFX">
+                            <rect key="frame" x="388" y="9.9999999999999982" width="46" height="19.333333333333329"/>
+                            <fontDescription key="fontDescription" name="Manrope-Bold" family="Manrope" pointSize="14"/>
+                            <color key="textColor" systemColor="systemRedColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+12.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skA-9a-2a3">
+                            <rect key="frame" x="388.66666666666669" y="34.333333333333336" width="45.333333333333314" height="19.333333333333336"/>
+                            <fontDescription key="fontDescription" name="Manrope-Bold" family="Manrope" pointSize="14"/>
+                            <color key="textColor" red="0.066666666669999999" green="0.7725490196" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="aqq-dd-HYt" firstAttribute="top" secondItem="hTV-hw-4ew" secondAttribute="top" constant="10" id="1Ty-F3-NwG"/>
+                        <constraint firstAttribute="bottom" secondItem="r9L-nX-7dX" secondAttribute="bottom" constant="11" id="46K-Sr-E9U"/>
+                        <constraint firstItem="r9L-nX-7dX" firstAttribute="top" secondItem="aqq-dd-HYt" secondAttribute="bottom" constant="6" id="4Fr-S3-w60"/>
+                        <constraint firstItem="JzS-U9-MMn" firstAttribute="centerX" secondItem="hTV-hw-4ew" secondAttribute="centerX" constant="20" id="63o-EL-LWu"/>
+                        <constraint firstItem="skA-9a-2a3" firstAttribute="top" secondItem="s06-im-fFX" secondAttribute="bottom" constant="5" id="7f3-cP-qB4"/>
+                        <constraint firstItem="JzS-U9-MMn" firstAttribute="leading" secondItem="aqq-dd-HYt" secondAttribute="trailing" constant="10" id="ITz-tN-sMh"/>
+                        <constraint firstItem="aqq-dd-HYt" firstAttribute="leading" secondItem="hTV-hw-4ew" secondAttribute="leading" constant="20" id="Igt-OI-EyE"/>
+                        <constraint firstItem="s06-im-fFX" firstAttribute="top" secondItem="aqq-dd-HYt" secondAttribute="top" id="Nye-M4-EM6"/>
+                        <constraint firstAttribute="trailing" secondItem="s06-im-fFX" secondAttribute="trailing" constant="10" id="PSw-lj-8G6"/>
+                        <constraint firstItem="r9L-nX-7dX" firstAttribute="leading" secondItem="hTV-hw-4ew" secondAttribute="leading" constant="20" id="SCR-jL-IQ9"/>
+                        <constraint firstItem="JzS-U9-MMn" firstAttribute="top" secondItem="aqq-dd-HYt" secondAttribute="top" id="mRn-tj-R6a"/>
+                        <constraint firstAttribute="trailing" secondItem="skA-9a-2a3" secondAttribute="trailing" constant="10" id="nTw-0G-8Ju"/>
+                        <constraint firstItem="s06-im-fFX" firstAttribute="top" secondItem="JzS-U9-MMn" secondAttribute="top" id="ucI-SK-CGL"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KNs-4l-LRu">
+                    <rect key="frame" x="0.0" y="112" width="444" height="1"/>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="4fB-oX-ffF"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="tcg-ST-TFf"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="hTV-hw-4ew" firstAttribute="leading" secondItem="tcg-ST-TFf" secondAttribute="leading" id="66P-kj-HOi"/>
+                <constraint firstItem="KNs-4l-LRu" firstAttribute="top" secondItem="hTV-hw-4ew" secondAttribute="bottom" constant="5" id="AJg-bc-ILv"/>
+                <constraint firstItem="hTV-hw-4ew" firstAttribute="top" secondItem="9V5-Jd-io4" secondAttribute="top" constant="10" id="RxA-ig-lB0"/>
+                <constraint firstItem="KNs-4l-LRu" firstAttribute="leading" secondItem="tcg-ST-TFf" secondAttribute="leading" id="SZA-9I-0hr"/>
+                <constraint firstItem="tcg-ST-TFf" firstAttribute="trailing" secondItem="hTV-hw-4ew" secondAttribute="trailing" id="VRA-3m-G3p"/>
+                <constraint firstItem="tcg-ST-TFf" firstAttribute="trailing" secondItem="KNs-4l-LRu" secondAttribute="trailing" id="dZr-f7-vtv"/>
+                <constraint firstAttribute="bottom" secondItem="hTV-hw-4ew" secondAttribute="bottom" constant="10" id="yAw-S3-69n"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="DatentimeLbl" destination="r9L-nX-7dX" id="iPN-fC-UOL"/>
+                <outlet property="loyaltyPointEarnLbl" destination="skA-9a-2a3" id="awd-DG-Gk9"/>
+                <outlet property="loyaltypointspentLbl" destination="s06-im-fFX" id="7Oy-35-XMz"/>
+                <outlet property="orderIdLbl" destination="aqq-dd-HYt" id="oam-tf-dca"/>
+                <outlet property="totalValueLbl" destination="JzS-U9-MMn" id="94I-Dq-Iyk"/>
+            </connections>
+            <point key="canvasLocation" x="132.82442748091603" y="-265.14084507042253"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

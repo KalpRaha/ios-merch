@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Manrope-Medium.ttf">
+            <string>Manrope-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ThreeDotsCell" customModule="QuickveeApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="190" height="55"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rmC-G1-aXL">
+                    <rect key="frame" x="10" y="10" width="25" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="nR5-Is-meM"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujz-m4-0EG">
+                    <rect key="frame" x="40" y="27.666666666666668" width="140" height="0.0"/>
+                    <fontDescription key="fontDescription" name="Manrope-Medium" family="Manrope" pointSize="18"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="ujz-m4-0EG" firstAttribute="leading" secondItem="rmC-G1-aXL" secondAttribute="trailing" constant="5" id="6gg-Zc-M05"/>
+                <constraint firstAttribute="bottom" secondItem="rmC-G1-aXL" secondAttribute="bottom" constant="10" id="EE8-gH-qLy"/>
+                <constraint firstItem="ujz-m4-0EG" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="iJR-EY-KzI"/>
+                <constraint firstItem="rmC-G1-aXL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="jXo-F9-YsM"/>
+                <constraint firstItem="rmC-G1-aXL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="kPU-W2-dqP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ujz-m4-0EG" secondAttribute="trailing" constant="10" id="lP5-rn-bea"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="optionLabel" destination="ujz-m4-0EG" id="OLc-Pf-aZX"/>
+            </connections>
+            <point key="canvasLocation" x="-102.29007633587786" y="-291.90140845070425"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

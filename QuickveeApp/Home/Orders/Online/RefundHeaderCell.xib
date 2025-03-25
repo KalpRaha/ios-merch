@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Manrope-SemiBold.ttf">
+            <string>Manrope-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RefundHeaderCell" rowHeight="31" id="ID2-SE-vCH" customClass="RefundHeaderCell" customModule="QuickveeApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="467" height="31"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ID2-SE-vCH" id="JbF-Ub-5CM">
+                <rect key="frame" x="0.0" y="0.0" width="467" height="31"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Refund" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Avo-XY-9zc">
+                        <rect key="frame" x="16.000000000000004" y="0.0" width="61.333333333333343" height="15"/>
+                        <fontDescription key="fontDescription" name="Manrope-SemiBold" family="Manrope" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38r-Nm-UxE">
+                        <rect key="frame" x="415" y="0.0" width="36" height="19.333333333333332"/>
+                        <fontDescription key="fontDescription" name="Manrope-SemiBold" family="Manrope" pointSize="14"/>
+                        <color key="textColor" red="0.63137254901960782" green="0.63137254901960782" blue="0.63137254901960782" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csA-79-cd6" userLabel="blueView">
+                        <rect key="frame" x="16.000000000000004" y="23" width="61.333333333333343" height="3"/>
+                        <color key="backgroundColor" red="0.039215686274509803" green="0.39215686274509803" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="3" id="Zjg-tC-Ieb"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxR-Od-hw8">
+                        <rect key="frame" x="16" y="25" width="435" height="1"/>
+                        <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="rAt-6V-Gra"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gxR-Od-hw8" firstAttribute="leading" secondItem="JbF-Ub-5CM" secondAttribute="leading" constant="16" id="9KP-cM-Xm1"/>
+                    <constraint firstItem="gxR-Od-hw8" firstAttribute="bottom" secondItem="JbF-Ub-5CM" secondAttribute="bottom" constant="-5" id="DkW-PP-xOw"/>
+                    <constraint firstItem="gxR-Od-hw8" firstAttribute="top" secondItem="Avo-XY-9zc" secondAttribute="bottom" constant="10" id="Mq4-RU-omT"/>
+                    <constraint firstItem="38r-Nm-UxE" firstAttribute="top" secondItem="JbF-Ub-5CM" secondAttribute="top" id="RID-4G-fbh"/>
+                    <constraint firstItem="Avo-XY-9zc" firstAttribute="top" secondItem="JbF-Ub-5CM" secondAttribute="top" id="YZa-am-8M1"/>
+                    <constraint firstItem="gxR-Od-hw8" firstAttribute="bottom" secondItem="csA-79-cd6" secondAttribute="bottom" id="ZkO-7j-hXN"/>
+                    <constraint firstAttribute="trailing" secondItem="gxR-Od-hw8" secondAttribute="trailing" constant="16" id="i8v-tk-XUB"/>
+                    <constraint firstItem="Avo-XY-9zc" firstAttribute="leading" secondItem="JbF-Ub-5CM" secondAttribute="leading" constant="16" id="t10-vj-Tqr"/>
+                    <constraint firstItem="Avo-XY-9zc" firstAttribute="trailing" secondItem="csA-79-cd6" secondAttribute="trailing" id="tLV-cr-Fgw"/>
+                    <constraint firstAttribute="trailing" secondItem="38r-Nm-UxE" secondAttribute="trailing" constant="16" id="yrH-WJ-Al4"/>
+                    <constraint firstItem="csA-79-cd6" firstAttribute="leading" secondItem="Avo-XY-9zc" secondAttribute="leading" id="z1X-gC-WJt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="refDateAndTime" destination="38r-Nm-UxE" id="e66-mj-tOK"/>
+            </connections>
+            <point key="canvasLocation" x="11.450381679389313" y="25"/>
+        </tableViewCell>
+    </objects>
+</document>

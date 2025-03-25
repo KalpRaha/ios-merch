@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <g id="U_Shipped" data-name="U Shipped" transform="translate(-0.078)">
+    <circle id="Ellipse_387" data-name="Ellipse 387" cx="25" cy="25" r="25" transform="translate(0.078)" fill="#cecece"/>
+    <g id="Group_6468" data-name="Group 6468" transform="translate(13.234 14.919)">
+      <path id="Path_7361" data-name="Path 7361" d="M9.156,33.254H7.021A2.134,2.134,0,0,1,4.887,31.12V16.179a2.134,2.134,0,0,1,2.134-2.134H19.827a2.134,2.134,0,0,1,2.134,2.134V33.254H13.424" transform="translate(-4.887 -14.045)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Path_7362" data-name="Path 7362" d="M100.455,70.04h0a2.134,2.134,0,0,1,2.134,2.134v4.269a2.134,2.134,0,0,1-2.134,2.134H98.748" transform="translate(-77.404 -59.368)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <circle id="Ellipse_385" data-name="Ellipse 385" cx="2.134" cy="2.134" r="2.134" transform="translate(4.269 17.075)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <circle id="Ellipse_386" data-name="Ellipse 386" cx="2.134" cy="2.134" r="2.134" transform="translate(17.075 17.075)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <rect id="Rectangle_2657" data-name="Rectangle 2657" width="8.537" height="8.537" rx="2" transform="translate(4.269 4.269)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_571" data-name="Line 571" y1="2.134" transform="translate(8.537 4.269)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Path_7363" data-name="Path 7363" d="M94.479,36.443h3.842a2.134,2.134,0,0,1,2.134,2.134v3.949" transform="translate(-77.404 -32.174)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

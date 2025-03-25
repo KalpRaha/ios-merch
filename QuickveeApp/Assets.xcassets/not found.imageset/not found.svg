@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="46" height="46" viewBox="0 0 46 46">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_3608" data-name="Rectangle 3608" width="46" height="46" transform="translate(-131 2904)" fill="none" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_4747" data-name="Mask Group 4747" transform="translate(131 -2904)" clip-path="url(#clip-path)">
+    <g id="no-connection" transform="translate(-147.668 2878.918)">
+      <g id="Group_8047" data-name="Group 8047" transform="translate(32.259 49.555)">
+        <g id="Group_8045" data-name="Group 8045" transform="translate(12.107 0)">
+          <line id="Line_908" data-name="Line 908" x1="3.375" y2="3.375" fill="none" stroke="#0a64f9" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+          <line id="Line_909" data-name="Line 909" x1="3.375" y1="3.375" fill="none" stroke="#0a64f9" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+        </g>
+        <g id="Group_8046" data-name="Group 8046" transform="translate(0 0)">
+          <line id="Line_910" data-name="Line 910" x1="3.375" y2="3.375" fill="none" stroke="#0a64f9" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+          <line id="Line_911" data-name="Line 911" x1="3.375" y1="3.375" fill="none" stroke="#0a64f9" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+        </g>
+      </g>
+      <path id="Path_10564" data-name="Path 10564" d="M216.658,376.785a4.715,4.715,0,0,1,6.668,0" transform="translate(-179.992 -317.122)" fill="none" stroke="#0a64f9" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+      <g id="Group_8052" data-name="Group 8052" transform="translate(20 28.919)">
+        <g id="Group_8051" data-name="Group 8051" transform="translate(0 0)">
+          <g id="Group_8050" data-name="Group 8050">
+            <g id="Group_8049" data-name="Group 8049">
+              <path id="Path_10565" data-name="Path 10565" d="M60,42.417H20V34a5.085,5.085,0,0,1,5.085-5.085H54.915A5.085,5.085,0,0,1,60,34Z" transform="translate(-20 -28.919)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+              <g id="Group_8048" data-name="Group 8048" transform="translate(6.604 6.749)">
+                <line id="Line_912" data-name="Line 912" x2="0.88" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+                <line id="Line_913" data-name="Line 913" x2="0.88" transform="translate(6.955)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+                <line id="Line_914" data-name="Line 914" x2="0.88" transform="translate(13.911)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+              </g>
+            </g>
+          </g>
+        </g>
+        <path id="Path_10566" data-name="Path 10566" d="M60,199.641v-11.45H20V208.1a5.085,5.085,0,0,0,5.085,5.085H54.915A5.085,5.085,0,0,0,60,208.115" transform="translate(-20 -174.693)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
+</svg>

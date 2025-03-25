@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Manrope-Bold.ttf">
+            <string>Manrope-Bold</string>
+        </array>
+        <array key="Manrope-Medium.ttf">
+            <string>Manrope-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="O12-cy-YYL" customClass="HeaderViewCell" customModule="QuickveeApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="528" height="298"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Xh-fb-iXN">
+                    <rect key="frame" x="0.0" y="59" width="528" height="205"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmn-cs-25x">
+                            <rect key="frame" x="0.0" y="-4" width="528" height="2"/>
+                            <color key="backgroundColor" systemColor="systemGray5Color"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="2" id="8N9-PL-dv2"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tIg-XQ-Uw3" userLabel="orderStack View">
+                            <rect key="frame" x="0.0" y="0.0" width="528" height="56"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxW-Z5-YWe">
+                                    <rect key="frame" x="0.0" y="0.0" width="259" height="56"/>
+                                    <fontDescription key="fontDescription" name="Manrope-Bold" family="Manrope" pointSize="16"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Paid Orders"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4q1-7l-bls">
+                                    <rect key="frame" x="269" y="0.0" width="259" height="56"/>
+                                    <fontDescription key="fontDescription" name="Manrope-Bold" family="Manrope" pointSize="16"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Refunded Orders"/>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="56" id="nhG-VG-Gk8"/>
+                            </constraints>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eGe-rX-exM">
+                            <rect key="frame" x="0.0" y="56" width="528" height="3"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAN-WM-n2d">
+                                    <rect key="frame" x="0.0" y="0.0" width="259" height="3"/>
+                                    <color key="backgroundColor" name="AccentColor"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Is9-di-1Ak">
+                                    <rect key="frame" x="269" y="0.0" width="259" height="3"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="3" id="3LE-Sg-kBH"/>
+                            </constraints>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pCA-Hu-aWQ">
+                            <rect key="frame" x="0.0" y="59" width="528" height="56"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmO-Hv-4Aa">
+                                    <rect key="frame" x="20" y="18.333333333333343" width="78.666666666666671" height="19.333333333333329"/>
+                                    <fontDescription key="fontDescription" name="Manrope-Medium" family="Manrope" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocb-tZ-41H">
+                                    <rect key="frame" x="267.66666666666669" y="18.333333333333343" width="33" height="19.333333333333329"/>
+                                    <fontDescription key="fontDescription" name="Manrope-Medium" family="Manrope" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bonus Points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTd-Cl-fkC">
+                                    <rect key="frame" x="421.66666666666669" y="18.333333333333343" width="86.333333333333314" height="19.333333333333329"/>
+                                    <fontDescription key="fontDescription" name="Manrope-Medium" family="Manrope" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="ocb-tZ-41H" firstAttribute="centerY" secondItem="pCA-Hu-aWQ" secondAttribute="centerY" id="Hxo-ei-nJ4"/>
+                                <constraint firstItem="TTd-Cl-fkC" firstAttribute="centerY" secondItem="pCA-Hu-aWQ" secondAttribute="centerY" id="OLa-14-hgf"/>
+                                <constraint firstItem="ocb-tZ-41H" firstAttribute="centerX" secondItem="pCA-Hu-aWQ" secondAttribute="centerX" constant="20" id="Plu-cI-8Ap"/>
+                                <constraint firstAttribute="trailing" secondItem="TTd-Cl-fkC" secondAttribute="trailing" constant="20" id="TWL-mX-ABl"/>
+                                <constraint firstItem="EmO-Hv-4Aa" firstAttribute="centerY" secondItem="pCA-Hu-aWQ" secondAttribute="centerY" id="Zkk-E2-p1n"/>
+                                <constraint firstItem="EmO-Hv-4Aa" firstAttribute="leading" secondItem="pCA-Hu-aWQ" secondAttribute="leading" constant="20" id="ds1-HE-fU8"/>
+                                <constraint firstAttribute="height" constant="56" id="gu6-0I-mVV"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="pCA-Hu-aWQ" secondAttribute="trailing" id="42N-Wk-N7D"/>
+                        <constraint firstItem="pCA-Hu-aWQ" firstAttribute="top" secondItem="eGe-rX-exM" secondAttribute="bottom" id="6bJ-rZ-X9H"/>
+                        <constraint firstAttribute="trailing" secondItem="eGe-rX-exM" secondAttribute="trailing" id="Rzg-Pi-TM0"/>
+                        <constraint firstItem="tIg-XQ-Uw3" firstAttribute="top" secondItem="4Xh-fb-iXN" secondAttribute="top" id="XUB-Tq-LaX"/>
+                        <constraint firstItem="bmn-cs-25x" firstAttribute="leading" secondItem="4Xh-fb-iXN" secondAttribute="leading" id="ZfC-2a-dAm"/>
+                        <constraint firstItem="tIg-XQ-Uw3" firstAttribute="top" secondItem="bmn-cs-25x" secondAttribute="bottom" constant="2" id="cWg-6t-hzd"/>
+                        <constraint firstItem="tIg-XQ-Uw3" firstAttribute="leading" secondItem="4Xh-fb-iXN" secondAttribute="leading" id="gLY-nW-bY0"/>
+                        <constraint firstItem="eGe-rX-exM" firstAttribute="leading" secondItem="4Xh-fb-iXN" secondAttribute="leading" id="jZM-gU-GXy"/>
+                        <constraint firstAttribute="trailing" secondItem="tIg-XQ-Uw3" secondAttribute="trailing" id="pzo-dn-mNE"/>
+                        <constraint firstItem="pCA-Hu-aWQ" firstAttribute="leading" secondItem="4Xh-fb-iXN" secondAttribute="leading" id="sR7-eF-QXb"/>
+                        <constraint firstItem="eGe-rX-exM" firstAttribute="top" secondItem="tIg-XQ-Uw3" secondAttribute="bottom" id="xch-RA-xIf"/>
+                        <constraint firstAttribute="trailing" secondItem="bmn-cs-25x" secondAttribute="trailing" id="xgr-oK-NBf"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="3uB-dX-bc7"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="4Xh-fb-iXN" firstAttribute="top" secondItem="3uB-dX-bc7" secondAttribute="top" id="3AQ-gI-G0V"/>
+                <constraint firstItem="3uB-dX-bc7" firstAttribute="bottom" secondItem="4Xh-fb-iXN" secondAttribute="bottom" id="8Ki-OM-I7l"/>
+                <constraint firstItem="4Xh-fb-iXN" firstAttribute="leading" secondItem="O12-cy-YYL" secondAttribute="leading" id="s1e-Zh-7rM"/>
+                <constraint firstAttribute="trailing" secondItem="4Xh-fb-iXN" secondAttribute="trailing" id="trP-2W-HtV"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bonusPointLbl" destination="TTd-Cl-fkC" id="E9Z-jJ-QhI"/>
+                <outlet property="orderDetailLbl" destination="EmO-Hv-4Aa" id="SIj-zp-rwa"/>
+                <outlet property="orderDetailView" destination="pCA-Hu-aWQ" id="N22-id-ho4"/>
+                <outlet property="orderDetailViewHeight" destination="gu6-0I-mVV" id="Fdc-ba-6Od"/>
+                <outlet property="paidOrderBtn" destination="nxW-Z5-YWe" id="9hU-Sc-aGZ"/>
+                <outlet property="paidView" destination="eAN-WM-n2d" id="8aC-oY-Q4e"/>
+                <outlet property="refundOrderBtn" destination="4q1-7l-bls" id="sre-tk-sxV"/>
+                <outlet property="refundView" destination="Is9-di-1Ak" id="tyY-16-BSm"/>
+                <outlet property="totalLbl" destination="ocb-tZ-41H" id="tHl-aP-TEz"/>
+            </connections>
+            <point key="canvasLocation" x="146.56488549618319" y="-181.69014084507043"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
