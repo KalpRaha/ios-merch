@@ -78,7 +78,8 @@ class SalesNewViewController: UIViewController {
             let urlString = change.newValue!?.absoluteString
            // https://awsbackend.quickvee.com
             // "https://quickvee.com/merchants/login"
-            if urlString == "https://quickvee.com/merchants/login" {
+            //"https://backend.quickvee.com/login"
+            if urlString == "https://backend.quickvee.com/login" {
                 
                 self.loadingIndicator.isAnimating = true
                 self.webview.isHidden = true
@@ -128,7 +129,7 @@ class SalesNewViewController: UIViewController {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         
         //"https://awsbackend.quickvee.com/login"
-        if webview.url!.absoluteString == "https://quickvee.com/merchants/login" {
+        if webview.url!.absoluteString == "https://backend.quickvee.com/login" {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 

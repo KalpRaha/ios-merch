@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import MaterialComponents
 
 protocol StockDelegate: AnyObject {
     
-    func stockCheck(variants: [InventoryVariant], addNew: [String], discrepancy: [String], item_id: [String])
+    func stockCheck(variants: [InventoryVariant], addNew: [String],
+                    discrepancy: [String], item_id: [String],
+                    notes: [String])
 }
 
 class StockSaveViewController: UIViewController {
@@ -30,6 +33,7 @@ class StockSaveViewController: UIViewController {
     
     var addNewQty = [String]()
     var discrepancyAdd = [String]()
+    var note = [String]()
     var stockItemId = [String]()
     
     var stockDraftList = [StockItem]()
@@ -42,6 +46,7 @@ class StockSaveViewController: UIViewController {
     var fullAddedStockList = [InventoryVariant]()
     var fullAddedNewQty = [String]()
     var fullAddedDiscrp = [String]()
+    var fullAddedNote = [String]()
     var fullAddedStockId = [String]()
     
     
@@ -146,12 +151,14 @@ class StockSaveViewController: UIViewController {
                                       current_qty: "\(res["current_qty"] ?? "")", new_qty: "\(res["new_qty"] ?? "")",
                                       discrepancy: "\(res["discrepancy"] ?? "")", discrepancy_cost: "\(res["discrepancy_cost"] ?? "")",
                                       merchant_id: "\(res["merchant_id"] ?? "")", employee_id: "\(res["employee_id"] ?? "")",
-                                      created_at: "\(res["created_at"] ?? "")", updated_at: "\(res["updated_at"] ?? "")")
+                                      created_at: "\(res["created_at"] ?? "")", updated_at: "\(res["updated_at"] ?? "")",
+                                      note: "\(res["note"] ?? "")")
             small.append(stockItem)
             
             addNewQty.append(stockItem.new_qty)
             print(addNewQty)
             discrepancyAdd.append(stockItem.discrepancy)
+            note.append(stockItem.note)
             stockItemId.append(stockItem.id)
         }
         
@@ -230,6 +237,7 @@ class StockSaveViewController: UIViewController {
         stockVarList.append(contentsOf: fullAddedStockList)
         addNewQty.append(contentsOf: fullAddedNewQty)
         discrepancyAdd.append(contentsOf: fullAddedDiscrp)
+        note.append(contentsOf: fullAddedNote)
         stockItemId.append(contentsOf: fullAddedStockId)
         
         DispatchQueue.main.async {
@@ -323,12 +331,14 @@ class StockSaveViewController: UIViewController {
                     total_dis_cost.append(cost_str)
                     total_dis.append(dis_str)
                     
+                    let note_per = note[fill]
+                    
                     let save = SaveStock(upc: upc, category_id: stockItemsList[fill].cotegory,
                                          product_id: stockItemsList[fill].id, variant_id: var_id,
                                          product_name: stockItemsList[fill].title,
                                          current_qty: stockItemsList[fill].quantity,
                                          new_qty: "\(newQty)", discrepancy: "\(discrepancy_per)",
-                                         discrepancy_cost: cost_str, stocktake_item_id: "")
+                                         discrepancy_cost: cost_str, stocktake_item_id: "", note: note_per)
                     
                     items.append(save)
                 }
@@ -460,13 +470,14 @@ class StockSaveViewController: UIViewController {
                         total_dis_cost.append(cost_str)
                         total_dis.append(dis_str)
                         
+                        let note_per = note[fill]
                         
                         let save = SaveStock(upc: upc, category_id: stockVarList[fill].cotegory,
                                              product_id: stockVarList[fill].id, variant_id: var_id,
                                              product_name: prod_name,
                                              current_qty: stockVarList[fill].quantity,
                                              new_qty: "\(newQty)", discrepancy: "\(discrepancy_per)",
-                                             discrepancy_cost: cost_str, stocktake_item_id: item_id)
+                                             discrepancy_cost: cost_str, stocktake_item_id: item_id, note: note_per)
                         
                         items.append(save)
                     }
@@ -545,7 +556,8 @@ class StockSaveViewController: UIViewController {
     @IBAction func cancelBtnClick(_ sender: UIButton) {
         
         if mode == "add" {
-            delegate?.stockAddCheck(variants: stockItemsList, addNewQty: addNewQty, disAdd: discrepancyAdd)
+            delegate?.stockAddCheck(variants: stockItemsList, addNewQty: addNewQty,
+                                    disAdd: discrepancyAdd, noteAdd: note)
         }
         navigationController?.popViewController(animated: true)
     }
@@ -570,6 +582,7 @@ class StockSaveViewController: UIViewController {
                 self.stockItemsList.remove(at: tag)
                 self.addNewQty.remove(at: tag)
                 self.discrepancyAdd.remove(at: tag)
+                self.note.remove(at: tag)
                 self.tableview.reloadData()
             }
             else {
@@ -581,6 +594,7 @@ class StockSaveViewController: UIViewController {
                     self.addNewQty.remove(at: tag)
                     self.discrepancyAdd.remove(at: tag)
                     self.stockItemId.remove(at: tag)
+                    self.note.remove(at: tag)
                     self.stockVarList.remove(at: tag)
                     
                     self.tableview.reloadData()
@@ -590,6 +604,7 @@ class StockSaveViewController: UIViewController {
                     var addedStock = [InventoryVariant]()
                     var addedNewQty = [String]()
                     var addedDiscrp = [String]()
+                    var addedNote = [String]()
                     var addedStockId = [String]()
                     
                     for i in 0..<self.stockItemId.count {
@@ -598,12 +613,14 @@ class StockSaveViewController: UIViewController {
                             addedStock.append(self.stockVarList[i])
                             addedNewQty.append(self.addNewQty[i])
                             addedDiscrp.append(self.discrepancyAdd[i])
+                            addedNote.append(self.note[i])
                             addedStockId.append(self.stockItemId[i])
                         }
                     }
                     self.fullAddedStockList = addedStock
                     self.fullAddedNewQty = addedNewQty
                     self.fullAddedDiscrp = addedDiscrp
+                    self.fullAddedNote = addedNote
                     self.fullAddedStockId = addedStockId
                     
                     self.callDeleteApi(item_id: pos)
@@ -632,6 +649,7 @@ class StockSaveViewController: UIViewController {
                 self.addNewQty = []
                 self.discrepancyAdd = []
                 self.stockItemId = []
+                self.note = []
                 self.stockDraftList = []
                 
                 self.setUpApi()
@@ -724,12 +742,14 @@ class StockSaveViewController: UIViewController {
                         total_dis_cost.append(cost_str)
                         total_dis.append(dis_str)
                         
+                        let note_per = note[fill]
+                        
                         let save = SaveStock(upc: upc, category_id: stockItemsList[fill].cotegory,
                                              product_id: stockItemsList[fill].id, variant_id: var_id,
                                              product_name: stockItemsList[fill].title,
                                              current_qty: stockItemsList[fill].quantity,
                                              new_qty: "\(newQty)", discrepancy: "\(discrepancy_per)",
-                                             discrepancy_cost: cost_str, stocktake_item_id: "")
+                                             discrepancy_cost: cost_str, stocktake_item_id: "", note: note_per)
                         
                         items.append(save)
                     }
@@ -860,13 +880,14 @@ class StockSaveViewController: UIViewController {
                         total_dis_cost.append(cost_str)
                         total_dis.append(dis_str)
                         
+                        let note_per = note[fill]
                         
                         let save = SaveStock(upc: upc, category_id: stockVarList[fill].cotegory,
                                              product_id: stockVarList[fill].id, variant_id: var_id,
                                              product_name: stockVarList[fill].title,
                                              current_qty: stockVarList[fill].quantity,
                                              new_qty: "\(newQty)", discrepancy: "\(discrepancy_per)",
-                                             discrepancy_cost: cost_str, stocktake_item_id: item_id)
+                                             discrepancy_cost: cost_str, stocktake_item_id: item_id, note: note_per)
                         
                         items.append(save)
                     }
@@ -970,6 +991,7 @@ class StockSaveViewController: UIViewController {
             vc.newAddQty = addNewQty
             vc.discrepancyAdd = discrepancyAdd
             vc.stock_Item_Id = stockItemId
+            vc.note = note
             vc.selectMode = "select"
             present(vc, animated: true)
         }
@@ -978,12 +1000,15 @@ class StockSaveViewController: UIViewController {
 
 extension StockSaveViewController: StockDelegate {
     
-    func stockCheck(variants: [InventoryVariant], addNew: [String], discrepancy: [String], item_id: [String]) {
+    func stockCheck(variants: [InventoryVariant], addNew: [String],
+                    discrepancy: [String], item_id: [String],
+                    notes: [String]) {
         
         stockVarList = variants
         
         addNewQty = addNew
         discrepancyAdd = discrepancy
+        note = notes
         stockItemId = item_id
         
         tableview.reloadData()
@@ -998,7 +1023,13 @@ extension StockSaveViewController: UITextFieldDelegate {
         
         let cell = tableview.cellForRow(at: index) as! StockSaveTableViewCell
         
-        activeTextField = cell.newQtyText
+        if textField == cell.newQtyText {
+            
+            activeTextField = cell.newQtyText
+        }
+        else {
+            activeTextField = cell.noteField
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -1007,27 +1038,42 @@ extension StockSaveViewController: UITextFieldDelegate {
         
         let cell = tableview.cellForRow(at: index) as! StockSaveTableViewCell
         
-        let current = cell.qtyValue.text ?? ""
-        let new = cell.newQtyText.text ?? ""
-        
-        let currentDouble = Int(current) ?? 0
-        let newDouble = Int(new) ?? 0
-        
-        addNewQty[textField.tag] = new
-        
-        if newDouble != 0 {
+        if textField == cell.newQtyText {
             
-            if currentDouble < 0 {
+            let current = cell.qtyValue.text ?? ""
+            let new = cell.newQtyText.text ?? ""
+            
+            let currentDouble = Int(current) ?? 0
+            let newDouble = Int(new) ?? 0
+            
+            addNewQty[textField.tag] = new
+            
+            if newDouble != 0 {
                 
-                let discrepancy = newDouble - currentDouble
-                print(discrepancy)
-                let total = String(discrepancy)
-                
-                if total.hasPrefix("-") {
-                    cell.disValue.text = total
+                if currentDouble < 0 {
+                    
+                    let discrepancy = newDouble - currentDouble
+                    print(discrepancy)
+                    let total = String(discrepancy)
+                    
+                    if total.hasPrefix("-") {
+                        cell.disValue.text = total
+                    }
+                    else {
+                        cell.disValue.text = "+\(total)"
+                    }
                 }
+                
                 else {
-                    cell.disValue.text = "+\(total)"
+                    let discrepancy = newDouble - currentDouble
+                    let total = String(discrepancy)
+                    
+                    if total.hasPrefix("-") {
+                        cell.disValue.text = total
+                    }
+                    else {
+                        cell.disValue.text = "+\(total)"
+                    }
                 }
             }
             
@@ -1042,20 +1088,17 @@ extension StockSaveViewController: UITextFieldDelegate {
                     cell.disValue.text = "+\(total)"
                 }
             }
+            discrepancyAdd[textField.tag] = cell.disValue.text ?? ""
+        }
+        
+        else if textField == cell.noteField {
+            
+            note[textField.tag] = cell.noteField.text ?? ""
         }
         
         else {
-            let discrepancy = newDouble - currentDouble
-            let total = String(discrepancy)
             
-            if total.hasPrefix("-") {
-                cell.disValue.text = total
-            }
-            else {
-                cell.disValue.text = "+\(total)"
-            }
         }
-        discrepancyAdd[textField.tag] = cell.disValue.text ?? ""
     }
     
     private func setupUI() {
@@ -1077,6 +1120,16 @@ extension StockSaveViewController: UITextFieldDelegate {
             loadingIndicator.heightAnchor
                 .constraint(equalTo: self.loadingIndicator.widthAnchor)
         ])
+    }
+    
+    func createCustomTextField(textField: MDCOutlinedTextField) {
+        
+        textField.label.text = "Note"
+        textField.font = UIFont(name: "Manrope-SemiBold", size: 13.0)
+        textField.setOutlineColor(UIColor(hexString: "#D0D0D0"), for: .normal)
+        textField.setOutlineColor(UIColor(hexString: "#D0D0D0"), for: .editing)
+        textField.setNormalLabelColor(UIColor(hexString: "#D0D0D0"), for: .normal)
+        textField.setFloatingLabelColor(UIColor(hexString: "#D0D0D0"), for: .editing)
     }
 }
 
@@ -1187,6 +1240,8 @@ extension StockSaveViewController: UITableViewDelegate, UITableViewDataSource {
             cell.disValue.text = ""
         }
         
+        cell.noteField.text = note[indexPath.row]
+        
         cell.deleteBtn.tag = indexPath.row
         
         cell.newQtyText.borderStyle = .none
@@ -1197,8 +1252,12 @@ extension StockSaveViewController: UITableViewDelegate, UITableViewDataSource {
         cell.newQtyView.layer.borderWidth = 1
         cell.newQtyView.layer.cornerRadius = 10
         
-        cell.newQtyText.delegate = self
+        createCustomTextField(textField: cell.noteField)
+
         cell.newQtyText.tag = indexPath.row
+        
+        cell.noteField.delegate = self
+        cell.noteField.tag = indexPath.row
         
         return cell
     }
@@ -1221,4 +1280,5 @@ struct SaveStock: Encodable {
     let discrepancy: String
     let discrepancy_cost: String
     let stocktake_item_id: String
+    let note: String
 }

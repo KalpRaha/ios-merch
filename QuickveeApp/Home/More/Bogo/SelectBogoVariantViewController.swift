@@ -40,14 +40,13 @@ class SelectBogoVariantViewController: UIViewController  {
     @IBOutlet weak var itemNameLbl: UILabel!
     @IBOutlet weak var itempriceLbl: UILabel!
     
-    @IBOutlet weak var itemNameViewHeight: NSLayoutConstraint!
-    
-    
     var variantList = [BogoVariantModel]()
     
     var sort_by_price = [BogoVariantModel] ()
     
     var searchvariantBoGoList = [VariantBogoModel]()
+    var searchSubVariantBoGoList = [VariantBogoModel]()
+    
     var variantBoGoList = [VariantBogoModel]()
     var subVariantBoGoList = [VariantBogoModel]()
     
@@ -62,12 +61,14 @@ class SelectBogoVariantViewController: UIViewController  {
     var mode = ""
     var disc_amt = ""
     
-    
+    var searchSelectAllMode = false
     var selectAllMode = false
+    
+    var isCategory = false
     
     var searching = false
     var discount_type = ""
- 
+    
     weak var adddelegate: SelectBogoDelegate?
     
     
@@ -77,11 +78,18 @@ class SelectBogoVariantViewController: UIViewController  {
         return progress
     }()
     
+    let loadIndicator: ProgressView = {
+        let progress = ProgressView(colors: [.white], lineWidth: 3)
+        progress.translatesAutoresizingMaskIntoConstraints = false
+        return progress
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        setup()
         tableview.dataSource = self
         tableview.delegate = self
         
@@ -104,7 +112,7 @@ class SelectBogoVariantViewController: UIViewController  {
         scanBtn.alpha = 1
         
         searchBar.showsCancelButton = true
-        searchBar.iq.resignOnTouchOutsideMode = .enabled
+        tableview.showsVerticalScrollIndicator = false
         
         variantListApi()
         
@@ -116,7 +124,6 @@ class SelectBogoVariantViewController: UIViewController  {
         cancelBtn.layer.borderWidth = 1
         cancelBtn.layer.borderColor = UIColor.black.cgColor
         
-        print(bogoSelectedVariants.count)
     }
     
     func variantListApi() {
@@ -148,7 +155,6 @@ class SelectBogoVariantViewController: UIViewController  {
             else {
                 print("Api Error")
             }
-            
         }
     }
     
@@ -157,8 +163,6 @@ class SelectBogoVariantViewController: UIViewController  {
         let responce = variant as! [[String:Any]]
         
         var small = [BogoVariantModel]()
-        var smallWidth = [String]()
-        var smallupcwidth = [String]()
         
         for res in responce {
             
@@ -180,7 +184,9 @@ class SelectBogoVariantViewController: UIViewController  {
                                             is_lottery: "\(res["is_lottery"] ?? "")",
                                             var_costperItem: "\(res["var_costperItem"] ?? "")")
             
-            small.append(variant)
+            if variant.is_lottery == "0" {
+                small.append(variant)
+            }
         }
         
         variantList = small
@@ -234,50 +240,41 @@ class SelectBogoVariantViewController: UIViewController  {
         }
         setCheckVariants()
     }
- 
+    
     func setCheckVariants() {
         
-        if mode == "add" {
-            
-            var fillList = [VariantBogoModel]()
-            
-            for addvar in sort_by_price {
-                
-                fillList.append(VariantBogoModel(bogo: addvar, isSelect:  false))
-            }
-            
-            variantBoGoList = fillList
-            subVariantBoGoList = fillList
-            categoryVariantList = fillList
-        }
+        var miniSelect = bogoSelectedVariants
         
-        else {
+        for editvar in sort_by_price {
             
-            var miniSelect = bogoSelectedVariants
-            
-            for editvar in sort_by_price {
+            if editvar.isvarient == "1" {
                 
-                if editvar.isvarient == "1" {
-                    
-                    if bogoSelectedVariants.contains(where: {$0.bogo.var_id == editvar.var_id}) {
-                    }
-                    else {
-                        miniSelect.append(VariantBogoModel(bogo: editvar, isSelect: false))
-                    }
+                if bogoSelectedVariants.contains(where: {$0.bogo.var_id == editvar.var_id}) {
                 }
                 else {
-                    
-                    if bogoSelectedVariants.contains(where: {$0.bogo.product_id == editvar.product_id}) {
-                    }
-                    else {
-                        miniSelect.append(VariantBogoModel(bogo: editvar, isSelect: false))
-                    }
+                    miniSelect.append(VariantBogoModel(bogo: editvar, isSelect: false))
+                }
+            }
+            else {
+                
+                if bogoSelectedVariants.contains(where: {$0.bogo.product_id == editvar.product_id}) {
+                }
+                else {
+                    miniSelect.append(VariantBogoModel(bogo: editvar, isSelect: false))
                 }
             }
             
             variantBoGoList = miniSelect
             subVariantBoGoList = miniSelect
             categoryVariantList = miniSelect
+            
+            if subVariantBoGoList.allSatisfy({$0.isSelect == true}) {
+                imageCheckBtn.setImage(UIImage(named: "check inventory"), for: .normal)
+            }
+            else {
+                imageCheckBtn.setImage(UIImage(named: "uncheck inventory"), for: .normal)
+            }
+            
         }
     }
     
@@ -357,24 +354,16 @@ class SelectBogoVariantViewController: UIViewController  {
                     
                     sender.setImage(UIImage(named: "uncheck inventory"), for: .normal)
                     
+                    searchSelectAllMode = false
                     selectAllMode = false
-                    bogoSelectedVariants = []
                     
                     for varindex in 0..<searchvariantBoGoList.count {
                         
-                        if searchvariantBoGoList[varindex].bogo.isvarient == "1" {
-                            
-                            searchvariantBoGoList[varindex].isSelect = false
-                            subVariantBoGoList[varindex].isSelect = false
-                            selectCategoryVariant(match: variantBoGoList[varindex], offset: false)
-                        }
-                        else {
-                            
-                            searchvariantBoGoList[varindex].isSelect = false
-                            subVariantBoGoList[varindex].isSelect = false
-                            selectCategoryVariant(match: variantBoGoList[varindex], offset: false)
-                        }
-                        
+                        searchvariantBoGoList[varindex].isSelect = false
+                        searchSubVariantBoGoList[varindex].isSelect = false
+                        selectSubVariant(match: searchvariantBoGoList[varindex], offset: false)
+                        selectCategoryVariant(match: searchvariantBoGoList[varindex], offset: false)
+                        selectBogoSelectedVariant(match: searchvariantBoGoList[varindex], offset: false)
                     }
                 }
                 else {
@@ -382,31 +371,22 @@ class SelectBogoVariantViewController: UIViewController  {
                     
                     for varindex  in 0..<searchvariantBoGoList.count {
                         
-                        if searchvariantBoGoList[varindex].bogo.isvarient == "1" {
-                            
-                            searchvariantBoGoList[varindex].isSelect = true
-                            subVariantBoGoList[varindex].isSelect = true
-                            selectCategoryVariant(match: variantBoGoList[varindex], offset: true)
-                            bogoSelectedVariants.append(searchvariantBoGoList[varindex])
-                        }
-                        else {
-                            
-                            searchvariantBoGoList[varindex].isSelect = true
-                            subVariantBoGoList[varindex].isSelect = true
-                            selectCategoryVariant(match: variantBoGoList[varindex], offset: true)
-                            bogoSelectedVariants.append(searchvariantBoGoList[varindex])
-                        }
-                        
+                        searchvariantBoGoList[varindex].isSelect = true
+                        searchSubVariantBoGoList[varindex].isSelect = true
+                        selectSubVariant(match: searchvariantBoGoList[varindex], offset: true)
+                        selectCategoryVariant(match: searchvariantBoGoList[varindex], offset: true)
+                        bogoSelectedVariants.append(searchvariantBoGoList[varindex])
                     }
                     
                     
                     if bogoSelectedVariants.count == 0 {
                         sender.setImage(UIImage(named: "uncheck inventory"), for: .normal)
+                        searchSelectAllMode = false
                         selectAllMode = false
                     }
                     else {
                         sender.setImage(UIImage(named: "check inventory"), for: .normal)
-                        selectAllMode = true
+                        searchSelectAllMode = true
                     }
                 }
                 
@@ -426,47 +406,37 @@ class SelectBogoVariantViewController: UIViewController  {
                     sender.setImage(UIImage(named: "uncheck inventory"), for: .normal)
                     
                     selectAllMode = false
-                    bogoSelectedVariants = []
+                    
+                    if !isCategory {
+                        bogoSelectedVariants = []
+                    }
                     
                     for varindex in 0..<variantBoGoList.count {
                         
-                        if variantBoGoList[varindex].bogo.isvarient == "1" {
-                            
-                            variantBoGoList[varindex].isSelect = false
-                            subVariantBoGoList[varindex].isSelect = false
-                            selectCategoryVariant(match: variantBoGoList[varindex], offset: false)
+                        variantBoGoList[varindex].isSelect = false
+                        subVariantBoGoList[varindex].isSelect = false
+                        selectCategoryVariant(match: variantBoGoList[varindex], offset: false)
+                        if isCategory {
+                            selectBogoSelectedVariant(match: variantBoGoList[varindex], offset: false)
                         }
-                        else {
-                            
-                            variantBoGoList[varindex].isSelect = false
-                            subVariantBoGoList[varindex].isSelect = false
-                            selectCategoryVariant(match: variantBoGoList[varindex], offset: false)
-                        }
-                        
                     }
                 }
                 else {
-                    
-                    
+                    if !isCategory {
+                        bogoSelectedVariants = []
+                    }
                     for varindex  in 0..<variantBoGoList.count {
                         
-                        if variantBoGoList[varindex].bogo.isvarient == "1" {
-                            
-                            variantBoGoList[varindex].isSelect = true
-                            subVariantBoGoList[varindex].isSelect = true
-                            selectCategoryVariant(match: variantBoGoList[varindex], offset: true)
-                            bogoSelectedVariants.append(variantBoGoList[varindex])
-                        }
-                        else {
-                            
-                            variantBoGoList[varindex].isSelect = true
-                            subVariantBoGoList[varindex].isSelect = true
-                            selectCategoryVariant(match: variantBoGoList[varindex], offset: true)
-                            bogoSelectedVariants.append(variantBoGoList[varindex])
-                        }
                         
+                        variantBoGoList[varindex].isSelect = true
+                        subVariantBoGoList[varindex].isSelect = true
+                        selectCategoryVariant(match: variantBoGoList[varindex], offset: true)
+                        bogoSelectedVariants.append(variantBoGoList[varindex])
                     }
                     
+                    if isCategory {
+                        filterBogoSelectedVariant(match: bogoSelectedVariants)
+                    }
                     
                     if bogoSelectedVariants.count == 0 {
                         sender.setImage(UIImage(named: "uncheck inventory"), for: .normal)
@@ -474,14 +444,17 @@ class SelectBogoVariantViewController: UIViewController  {
                     }
                     else {
                         sender.setImage(UIImage(named: "check inventory"), for: .normal)
-                        selectAllMode = true
+                        if isCategory {
+                            selectAllMode = false
+                        }
+                        else {
+                            selectAllMode = true
+                        }
                     }
                 }
-                
             }
             tableview.reloadData()
         }
-        
     }
     
     
@@ -543,6 +516,22 @@ class SelectBogoVariantViewController: UIViewController  {
         }
     }
     
+    func selectSearchSubVariant(match: VariantBogoModel, offset: Bool) {
+        
+        
+        if match.bogo.isvarient == "1" {
+            
+            let index = searchSubVariantBoGoList.firstIndex(where: {$0.bogo.var_id == match.bogo.var_id}) ?? 0
+            searchSubVariantBoGoList[index].isSelect = offset
+            
+        }
+        else {
+            
+            let index = searchSubVariantBoGoList.firstIndex(where: {$0.bogo.product_id == match.bogo.product_id}) ?? 0
+            searchSubVariantBoGoList[index].isSelect = offset
+        }
+    }
+    
     func selectCategoryVariant(match: VariantBogoModel, offset: Bool) {
         
         if match.bogo.isvarient == "1" {
@@ -557,26 +546,74 @@ class SelectBogoVariantViewController: UIViewController  {
         }
     }
     
+    func selectBogoSelectedVariant(match: VariantBogoModel, offset: Bool) {
+        
+        if match.bogo.isvarient == "1" {
+            
+            bogoSelectedVariants.removeAll(where: {$0.bogo.var_id == match.bogo.var_id})
+        }
+        else {
+            bogoSelectedVariants.removeAll(where: {$0.bogo.product_id == match.bogo.product_id})
+        }
+    }
+    
+    func filterBogoSelectedVariant(match: [VariantBogoModel]) {
+        
+        var smallFilter = [VariantBogoModel]()
+        
+        for i in match {
+            
+            if i.bogo.isvarient == "1" {
+                
+                if smallFilter.contains(where: {$0.bogo.var_id == i.bogo.var_id}) {
+                    
+                }
+                else {
+                    smallFilter.append(i)
+                }
+            }
+            else {
+                if smallFilter.contains(where: {$0.bogo.product_id == i.bogo.product_id}) {
+                    
+                }
+                else {
+                    smallFilter.append(i)
+                }
+            }
+        }
+        bogoSelectedVariants = smallFilter
+    }
+    
     func performSearch(searchText: String) {
         
-        var arr = variantBoGoList
+        var arr = [VariantBogoModel]()
         
         if searchText == "" {
             searching = false
+            
+            setCheckVariants()
+            arr = variantBoGoList
         }
         else {
             searching = true
-            
+            searchvariantBoGoList = []
             searchvariantBoGoList = subVariantBoGoList.filter {
                 $0.bogo.title.lowercased().contains(searchText.lowercased())
                 || $0.bogo.var_upc.lowercased().contains(searchText.lowercased())
                 ||  $0.bogo.upc.lowercased().contains(searchText.lowercased())
             }
             arr = searchvariantBoGoList
+            searchSubVariantBoGoList = arr
             
+            if searchSubVariantBoGoList.allSatisfy({$0.isSelect == true}) {
+                imageCheckBtn.setImage(UIImage(named: "check inventory"), for: .normal)
+            }
+            else {
+                imageCheckBtn.setImage(UIImage(named: "uncheck inventory"), for: .normal)
+            }
         }
+        
         if arr.count == 0 {
-            itemNameViewHeight.constant = 0
             tableview.isHidden = true
             itemNameView.isHidden = true
             imageCheckBtn.isHidden = true
@@ -588,7 +625,6 @@ class SelectBogoVariantViewController: UIViewController  {
         }
         else {
             
-            itemNameViewHeight.constant = 52
             itemNameView.isHidden = false
             imageCheckBtn.isHidden = false
             itemNameLbl.isHidden = false
@@ -616,14 +652,17 @@ class SelectBogoVariantViewController: UIViewController  {
         present(vc, animated: true, completion: {
             vc.presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false
         })
-        
     }
     
     @IBAction func nextBtnClick(_ sender: UIButton) {
         
-        adddelegate?.addSelectedBogoVariants(arr: bogoSelectedVariants)
-        dismiss(animated: true)
+        loadIndicator.isAnimating = true
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.adddelegate?.addSelectedBogoVariants(arr: self.bogoSelectedVariants)
+            self.loadIndicator.isAnimating = false
+            self.dismiss(animated: true)
+        }
     }
     
     private func setupUI() {
@@ -645,10 +684,28 @@ class SelectBogoVariantViewController: UIViewController  {
                 .constraint(equalTo: self.loadingIndicator.widthAnchor)
         ])
     }
-    
-    
+     
+    func setup() {
+        
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
+        
+        nextBtn.addSubview(loadIndicator)
+        
+        NSLayoutConstraint.activate([
+            loadIndicator.centerXAnchor
+                .constraint(equalTo: nextBtn.centerXAnchor, constant: 30),
+            loadIndicator.centerYAnchor
+                .constraint(equalTo: nextBtn.centerYAnchor),
+            loadIndicator.widthAnchor
+                .constraint(equalToConstant: 15),
+            loadIndicator.heightAnchor
+                .constraint(equalTo: self.loadIndicator.widthAnchor)
+        ])
+    }
+  
 }
-
 
 
 extension SelectBogoVariantViewController : SelectedCategoryProductsDelegate  {
@@ -662,13 +719,22 @@ extension SelectBogoVariantViewController : SelectedCategoryProductsDelegate  {
         
         
         if catCount > 0 {
-            
+            isCategory = true
             getCategorySelect()
             filterLbl.text = "   \(catCount)   "
             filterView.backgroundColor = .systemBlue
+            
+            if subVariantBoGoList.count > 0 {
+                if subVariantBoGoList.allSatisfy({$0.isSelect == true}) {
+                    imageCheckBtn.setImage(UIImage(named: "check inventory"), for: .normal)
+                }
+                else {
+                    imageCheckBtn.setImage(UIImage(named: "uncheck inventory"), for: .normal)
+                }
+            }
         }
         else {
-            
+            isCategory = false
             var subList = bogoSelectedVariants
             
             if bogoSelectedVariants.count > 0 {
@@ -694,6 +760,7 @@ extension SelectBogoVariantViewController : SelectedCategoryProductsDelegate  {
             else {
                 subList = categoryVariantList
             }
+            
             variantBoGoList = subList
             subVariantBoGoList = subList
             imageCheckBtn.setImage(UIImage(named: "uncheck inventory"), for: .normal)
@@ -722,6 +789,9 @@ extension SelectBogoVariantViewController : UISearchBarDelegate {
         filterBtn.alpha = 1
         scanBtn.alpha = 1
         searchBar.alpha = 0
+        
+        searchSelectAllMode = false
+        selectAllMode = false
         
         view.endEditing(true)
         performSearch(searchText: "")
@@ -783,7 +853,6 @@ extension SelectBogoVariantViewController: UITableViewDelegate, UITableViewDataS
             if variant.bogo.isvarient == "1" {
                 
                 
-                cell.varientLbl.isHidden = false
                 let title = variant.bogo.title
                 let variantName = variant.bogo.variant
                 
@@ -793,13 +862,13 @@ extension SelectBogoVariantViewController: UITableViewDelegate, UITableViewDataS
                     cell.titleLbl.text = separatedTitle
                 }
                 
-                cell.priceLbl.text = variant.bogo.var_price
+                cell.priceLbl.text = "$ \(variant.bogo.var_price)"
                 cell.upcLabel.text = variant.bogo.var_upc
                 cell.varientLbl.text =  variant.bogo.variant
                 
                 let currentVarId = variant.bogo.var_id
                 
-                if selectAllMode {
+                if searchSelectAllMode {
                     
                     cell.checkMarkImage.image = UIImage(named: "check inventory")
                 }
@@ -817,14 +886,14 @@ extension SelectBogoVariantViewController: UITableViewDelegate, UITableViewDataS
                 }
             }
             else {
-                cell.varientLbl.isHidden = true
                 cell.titleLbl.text = variant.bogo.title
-                cell.priceLbl.text = variant.bogo.price
+                cell.priceLbl.text = "$\(variant.bogo.price)"
                 cell.upcLabel.text = variant.bogo.upc
-                
+                cell.varientLbl.text = ""
+
                 let currentProdId = variant.bogo.product_id
                 
-                if selectAllMode {
+                if searchSelectAllMode {
                     
                     cell.checkMarkImage.image = UIImage(named: "check inventory")
                 }
@@ -834,7 +903,7 @@ extension SelectBogoVariantViewController: UITableViewDelegate, UITableViewDataS
                         
                         cell.checkMarkImage.image = UIImage(named: "check inventory")
                     }
-                    else if bogoSelectedVariants.contains(where: {$0.bogo.var_id == currentProdId})  {
+                    else if bogoSelectedVariants.contains(where: {$0.bogo.product_id == currentProdId})  {
                         
                         cell.checkMarkImage.image = UIImage(named: "check inventory")
                     }
@@ -856,9 +925,7 @@ extension SelectBogoVariantViewController: UITableViewDelegate, UITableViewDataS
             let variant = variantBoGoList[indexPath.row]
             
             if variant.bogo.isvarient == "1" {
-                
-                cell.varientLbl.isHidden = false
-                
+                                
                 let title = variant.bogo.title
                 let variantName = variant.bogo.variant
                 
@@ -868,7 +935,7 @@ extension SelectBogoVariantViewController: UITableViewDelegate, UITableViewDataS
                     cell.titleLbl.text = separatedTitle
                 }
                 
-                cell.priceLbl.text = variant.bogo.var_price
+                cell.priceLbl.text = "$\(variant.bogo.var_price)"
                 cell.upcLabel.text = variant.bogo.var_upc
                 cell.varientLbl.text =  variant.bogo.variant
                 
@@ -897,12 +964,12 @@ extension SelectBogoVariantViewController: UITableViewDelegate, UITableViewDataS
             else {
                 
                 cell.titleLbl.text = variant.bogo.title
-                cell.priceLbl.text = variant.bogo.price
+                cell.priceLbl.text = "$\(variant.bogo.price)"
                 cell.upcLabel.text = variant.bogo.upc
-                cell.varientLbl.isHidden = true
+                cell.varientLbl.text = ""
                 
                 let currentProdId = variant.bogo.product_id
-              
+                
                 if selectAllMode {
                     
                     cell.checkMarkImage.image = UIImage(named: "check inventory")
@@ -927,7 +994,7 @@ extension SelectBogoVariantViewController: UITableViewDelegate, UITableViewDataS
             return cell
         }
     }
-   
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if searching {
@@ -943,11 +1010,16 @@ extension SelectBogoVariantViewController: UITableViewDelegate, UITableViewDataS
                 
                 variant.isSelect = true
                 selectSubVariant(match: variant, offset: true)
-                subVariantBoGoList[indexPath.row].isSelect = true
+                selectSearchSubVariant(match: variant, offset: true)
                 selectCategoryVariant(match: variant, offset: true)
                 bogoSelectedVariants.append(variant)
                 
-                imageCheckBtn.setImage(UIImage(named: "uncheck inventory"), for: .normal)
+                if searchSubVariantBoGoList.allSatisfy({$0.isSelect == true}) {
+                    imageCheckBtn.setImage(UIImage(named: "check inventory"), for: .normal)
+                }
+                else {
+                    imageCheckBtn.setImage(UIImage(named: "uncheck inventory"), for: .normal)
+                }
                 
                 
             }
@@ -957,8 +1029,7 @@ extension SelectBogoVariantViewController: UITableViewDelegate, UITableViewDataS
                 
                 variant.isSelect = false
                 selectSubVariant(match: variant, offset: false)
-                
-                subVariantBoGoList[indexPath.row].isSelect = false
+                selectSearchSubVariant(match: variant, offset: false)
                 selectCategoryVariant(match: variant, offset: false)
                 unSelectVarient(match: variant)
                 
@@ -978,11 +1049,15 @@ extension SelectBogoVariantViewController: UITableViewDelegate, UITableViewDataS
                 
                 variant.isSelect = true
                 selectSubVariant(match: variant, offset: true)
-                subVariantBoGoList[indexPath.row].isSelect = true
                 selectCategoryVariant(match: variant, offset: true)
                 bogoSelectedVariants.append(variant)
                 
-                imageCheckBtn.setImage(UIImage(named: "uncheck inventory"), for: .normal)
+                if subVariantBoGoList.allSatisfy({$0.isSelect == true}) {
+                    imageCheckBtn.setImage(UIImage(named: "check inventory"), for: .normal)
+                }
+                else {
+                    imageCheckBtn.setImage(UIImage(named: "uncheck inventory"), for: .normal)
+                }
             }
             else {
                 
@@ -990,8 +1065,6 @@ extension SelectBogoVariantViewController: UITableViewDelegate, UITableViewDataS
                 
                 variant.isSelect = false
                 selectSubVariant(match: variant, offset: false)
-                
-                subVariantBoGoList[indexPath.row].isSelect = false
                 selectCategoryVariant(match: variant, offset: false)
                 unSelectVarient(match: variant)
                 

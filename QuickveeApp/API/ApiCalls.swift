@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import AdSupport
 
 class ApiCalls {
     
@@ -30,10 +31,13 @@ class ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -66,10 +70,13 @@ class ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -92,10 +99,13 @@ class ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: id, response: res)
             }
         }
     }
@@ -118,10 +128,13 @@ class ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: id, response: res)
             }
         }
     }
@@ -148,10 +161,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: id, response: res)
             }
         }
     }
@@ -250,10 +266,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: id, response: res)
             }
         }
     }
@@ -361,10 +380,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -478,10 +500,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
         
@@ -509,10 +534,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -538,10 +566,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -567,10 +598,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: id, response: res)
             }
         }
     }
@@ -593,10 +627,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -619,10 +656,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -650,10 +690,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -681,15 +724,17 @@ extension ApiCalls {
                     completion(true, json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
 }
-
 
 extension ApiCalls {
     
@@ -710,17 +755,78 @@ extension ApiCalls {
                     let json = try JSONSerialization.jsonObject(with: response.data!, options: []) as! [String:Any]
                     completion(true,json)
                 }
-                catch {
+                catch let error as NSError {
+                    print(error)
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
+                    self.showAlert(title: "Alert", message: "Something went wrong. Please try again")
                     
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
+                self.showAlert(title: "Alert", message: "Something went wrong. Please try again")
             }
         }
     }
     
+    func logErrorApi(merchant_id: String, response: String) {
+        
+        let url =  AppURLs.LOGURL
+        
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let formattedDate = dateFormatter.string(from: currentDate)
+        
+        let comparisonDateString = "2025-04-20 00:00:00"
+        
+        if let comparisonDate = dateFormatter.date(from: comparisonDateString) {
+            // Compare the current date with April 15, 2025
+            if currentDate > comparisonDate {
+                print("The current date is greater than April 15, 2025.")
+            } else {
+                print("The current date is not greater than April 15, 2025.")
+                
+                let parameters: [String:Any] = [
+                    "merchant_id": merchant_id,
+                    "adv_id": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
+                    "datetime": "\(formattedDate)",
+                    "source": response
+                ]
+                
+                
+                AF.request(url, method: .post, parameters: parameters).responseData { response in
+                    
+                    switch response.result {
+                        
+                    case .success(_):
+                        do {
+                            let json = try JSONSerialization.jsonObject(with: response.data!, options: []) as! [String:Any]
+                            
+                        }
+                        catch let error as NSError {
+                            print(error)
+                            self.showAlert(title: "Alert", message: "Something went wrong. Please try again")
+                        }
+                        break
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                        self.showAlert(title: "Alert", message: "Something went wrong. Please try again")
+                    }
+                }
+            }
+        }else {
+            print("Error: Could not parse comparison date.")
+        }
+    }
     
-    
+    func showAlert(title: String, message: String) {
+        
+        ToastClass.sharedToast.showToast(message: "Something went wrong. Please try again",
+                                         font: UIFont(name: "Manrope-SemiBold", size: 14.0)!)
+    }
 }
 
 extension ApiCalls {
@@ -744,10 +850,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -775,10 +884,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: "", response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: "", response: res)
             }
         }
     }
@@ -827,10 +939,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: "", response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: "", response: res)
             }
         }
     }
@@ -863,10 +978,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -894,10 +1012,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -929,10 +1050,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
             
         }
@@ -970,10 +1094,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
             
         }
@@ -1000,10 +1127,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
             
         }
@@ -1029,10 +1159,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: id, response: res)
             }
             
         }
@@ -1070,10 +1203,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
             
         }
@@ -1110,10 +1246,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
             
         }
@@ -1158,11 +1297,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
                 
             }
         }
@@ -1192,12 +1334,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1227,11 +1371,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
                 
             }
         }
@@ -1263,12 +1410,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1293,12 +1442,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1328,12 +1479,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1361,12 +1514,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1400,12 +1555,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1435,12 +1592,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1477,12 +1636,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1508,12 +1669,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1550,12 +1713,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1584,12 +1749,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1615,12 +1782,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1662,12 +1831,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1694,12 +1865,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1744,12 +1917,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1775,12 +1950,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1804,12 +1981,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1852,12 +2031,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1881,12 +2062,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1915,12 +2098,14 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -1957,7 +2142,8 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -1991,10 +2177,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch{
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
             
             
@@ -2016,21 +2205,24 @@ extension ApiCalls {
         ]
         print(parameters)
         
-        AF.request(url,method: .post,parameters: parameters).responseData {responce in
+        AF.request(url,method: .post,parameters: parameters).responseData {response in
             
-            switch responce.result {
+            switch response.result {
                 
             case .success(_):
                 do {
-                    let json = try JSONSerialization.jsonObject(with: responce.data!, options:[]) as! [String:Any]
+                    let json = try JSONSerialization.jsonObject(with: response.data!, options:[]) as! [String:Any]
                     print(json)
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
             
             
@@ -2063,10 +2255,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
             
         }
@@ -2102,10 +2297,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2133,10 +2331,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2161,10 +2362,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2192,10 +2396,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2222,10 +2429,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2257,10 +2467,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2290,10 +2503,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2343,10 +2559,13 @@ extension ApiCalls {
                     
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2371,10 +2590,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2401,10 +2623,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2426,23 +2651,26 @@ extension ApiCalls {
         print(parameters)
         print(parameters)
         
-        AF.request(url,method: .post,parameters: parameters).responseData { respose in
+        AF.request(url,method: .post,parameters: parameters).responseData { response in
             
-            switch respose.result {
+            switch response.result {
                 
             case .success(_):
                 do {
-                    let json = try JSONSerialization.jsonObject(with: respose.data!, options: []) as! [String: Any]
+                    let json = try JSONSerialization.jsonObject(with: response.data!, options: []) as! [String: Any]
                     print(json)
                     completion(true,json)
                     
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2484,10 +2712,13 @@ extension ApiCalls {
                     
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2510,10 +2741,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2538,14 +2772,17 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
-
+    
 }
 
 extension ApiCalls {
@@ -2569,10 +2806,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2610,10 +2850,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2639,10 +2882,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2666,10 +2912,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2706,10 +2955,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2739,10 +2991,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
@@ -2772,10 +3027,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: "", response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: "", response: res)
                 
             }
         }
@@ -2804,15 +3062,18 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
                 
             }
         }
     }
-  
+    
 }
 
 extension ApiCalls {
@@ -2836,14 +3097,17 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
- 
+    
     
     func addBogoApiCall(merchant_id: String, deal_name: String, description: String, no_end_date: String,
                         use_with_coupon: String, buy_qty: String, free_qty: String, discount: String,
@@ -2881,18 +3145,21 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
         }
     }
- 
+    
     
     
     func enableBogoApiCall(merchant_id: String, id: String, is_enable: String,
-                         completion:@escaping(Bool,[String:Any]) -> ()){
+                           completion:@escaping(Bool,[String:Any]) -> ()){
         
         let url = AppURLs.ENABLE_BOGO
         
@@ -2912,10 +3179,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch{
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
             
             
@@ -2925,7 +3195,7 @@ extension ApiCalls {
     
     
     func enableAllBogoApiCall(merchant_id: String, enable_all: String,
-                         completion:@escaping(Bool,[String:Any]) -> ()){
+                              completion:@escaping(Bool,[String:Any]) -> ()){
         
         let url = AppURLs.ENABLE_BOGO
         
@@ -2947,10 +3217,13 @@ extension ApiCalls {
                     completion(true,json)
                 }
                 catch{
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
             
             
@@ -2970,21 +3243,24 @@ extension ApiCalls {
         ]
         print(parameters)
         
-        AF.request(url,method: .post,parameters: parameters).responseData {responce in
+        AF.request(url,method: .post,parameters: parameters).responseData {response in
             
-            switch responce.result {
+            switch response.result {
                 
             case .success(_):
                 do {
-                    let json = try JSONSerialization.jsonObject(with: responce.data!, options:[]) as! [String:Any]
+                    let json = try JSONSerialization.jsonObject(with: response.data!, options:[]) as! [String:Any]
                     print(json)
                     completion(true,json)
                 }
                 catch {
-                    
+                    let res = "ios_app\(response.response?.statusCode)"
+                    self.logErrorApi(merchant_id: merchant_id, response: res)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                let res = "ios_app\(response.response?.statusCode)"
+                self.logErrorApi(merchant_id: merchant_id, response: res)
             }
             
             

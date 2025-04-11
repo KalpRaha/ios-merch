@@ -14,6 +14,7 @@ class OnlineOrderCell: UITableViewCell {
     @IBOutlet weak var qtyLblb: UILabel!
     @IBOutlet weak var totalPriceLbl: UILabel!
    
+    @IBOutlet weak var bogoDiscoutLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     }

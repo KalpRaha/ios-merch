@@ -313,6 +313,7 @@ class InStoreDetailViewController: UIViewController {
         
         couponCode = CouponCode(coupon_code: "\(coupon_dict["coupon_code"] ?? "")",
                                 coupon_code_amt: "\(coupon_dict["coupon_code_amt"] ?? "")",
+                                bogo_discount: "\(coupon_dict["bogo_discount"] ?? "")",
                                 loyalty_point_earned: "\(coupon_dict["loyalty_point_earned"] ?? "")",
                                 loyalty_point_amt_earned: "\(coupon_dict["loyalty_point_amt_earned"] ?? "")",
                                 loyalty_point_amt_spent: "\(coupon_dict["loyalty_point_amt_spent"] ?? "")",
@@ -1239,6 +1240,7 @@ class InStoreDetailViewController: UIViewController {
                                  bulk_price_id: "\(res["bulk_price_id"] ?? "")",
                                  qty: "\(res["qty"] ?? "")", note: "\(res["note"] ?? "")",
                                  userData: "\(res["userData"] ?? "")", taxRates: "\(res["taxRates"] ?? "")",
+                                 bogo_discount: "\(res["bogo_discount"] ?? "")",
                                  default_tax_amount: "\(res["default_tax_amount"] ?? "")",
                                  other_taxes_amount: "\(res["other_taxes_amount"] ?? "")",
                                  other_taxes_desc: "\(res["other_taxes_desc"] ?? "")",

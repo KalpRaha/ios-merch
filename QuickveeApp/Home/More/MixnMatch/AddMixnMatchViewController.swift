@@ -1185,16 +1185,9 @@ extension AddMixnMatchViewController : UITableViewDelegate , UITableViewDataSour
             
             cell.titleLbl.text = variant.mix.title
             
-         
-          
-            if searchVarArray.count != 0 {
-
-                let widthDoub = Double(widthArr[indexPath.row]) ?? 0.00
-                cell.viewWidth.constant = widthDoub
+        
                 cell.contentView.backgroundColor = UIColor.white
-            }
-
-            
+           
             cell.closeBtn.tag = indexPath.row
             
             return cell
@@ -1227,13 +1220,9 @@ extension AddMixnMatchViewController : UITableViewDelegate , UITableViewDataSour
                 cell.varientlbl.isHidden = true
             }
           
-            
-            
-            if variantArray.count != 0 {
-                let widthDoub = Double(widthArr[indexPath.row]) ?? 0.00
-                cell.viewWidth.constant = widthDoub
+         
                 cell.contentView.backgroundColor = UIColor.white
-            }
+          
             
             cell.closeBtn.tag = indexPath.row
             

@@ -525,6 +525,7 @@ class InStoreNewRefundViewController: UIViewController {
         
         couponCode = CouponCode(coupon_code: "\(coupon_dict["coupon_code"] ?? "")",
                                 coupon_code_amt: "\(coupon_dict["coupon_code_amt"] ?? "")",
+                                bogo_discount: "\(coupon_dict["bogo_discount"] ?? "")",
                                 loyalty_point_earned: "\(coupon_dict["loyalty_point_earned"] ?? "")",
                                 loyalty_point_amt_earned: "\(coupon_dict["loyalty_point_amt_earned"] ?? "")",
                                 loyalty_point_amt_spent: "\(coupon_dict["loyalty_point_amt_spent"] ?? "")",
@@ -574,6 +575,8 @@ class InStoreNewRefundViewController: UIViewController {
         // couponcode
         let coupon_code = couponCode?.coupon_code ?? ""
         let coupon_code_amt = couponCode?.coupon_code_amt ?? "0.00"
+        
+        let bogo_discount = couponCode?.bogo_discount ?? "0.00"
         
         var points_earned = couponCode?.loyalty_point_earned ?? "0.00"
         let points_amt_earned = couponCode?.loyalty_point_amt_earned ?? "0.00"
@@ -642,14 +645,16 @@ class InStoreNewRefundViewController: UIViewController {
         if coupon_code_amt != "0.0" && coupon_code_amt != "0.00" && coupon_code_amt != "-0.00"
             && coupon_code_amt != "-0.0" && coupon_code_amt != "0" && coupon_code_amt != ""  {
             
-            if coupon_code != "Discount" && coupon_code != "" && coupon_code != "0.0"
-                && coupon_code != "0.00" && coupon_code != "-0.00" && coupon_code != "-0.0" && coupon_code != "0" {
-                grossRefundLabel.append(coupon_code)
-                grossRefundValue.append(coupon_code_amt)
-            }
-            
-            else if coupon_code_amt == points_amt_spent || coupon_code_amt == store_credit {
+            if bogo_discount != "0.0" && bogo_discount != "0.00" && bogo_discount != "-0.00"
+                && bogo_discount != "-0.0" && bogo_discount != "0" && bogo_discount != ""  {
                 
+                let doub_coupon_amt = Double(coupon_code_amt) ?? 0.00
+                let doub_bogo_discount = Double(bogo_discount) ?? 0.00
+                
+                let total = doub_coupon_amt + doub_bogo_discount
+                
+                grossRefundLabel.append("Discounts")
+                grossRefundValue.append("\(total)")
             }
             
             else {
@@ -657,10 +662,19 @@ class InStoreNewRefundViewController: UIViewController {
                 grossRefundValue.append(coupon_code_amt)
             }
         }
-        
         else {
-            grossRefundLabel.append("Discounts")
-            grossRefundValue.append("0.00")
+            
+            if bogo_discount != "0.0" && bogo_discount != "0.00" && bogo_discount != "-0.00"
+                && bogo_discount != "-0.0" && bogo_discount != "0" && bogo_discount != ""  {
+                
+                grossRefundLabel.append("Discounts")
+                grossRefundValue.append(bogo_discount)
+            }
+            
+            else {
+                grossRefundLabel.append("Discounts")
+                grossRefundValue.append("0.00")
+            }
         }
         
         
@@ -4951,6 +4965,7 @@ class InStoreNewRefundViewController: UIViewController {
                                  bulk_price_id: "\(res["bulk_price_id"] ?? "")",
                                  qty: "\(res["qty"] ?? "")", note: "\(res["note"] ?? "")",
                                  userData: "\(res["userData"] ?? "")", taxRates: "\(res["taxRates"] ?? "")",
+                                 bogo_discount: "\(res["bogo_discount"] ?? "")",
                                  default_tax_amount: "\(res["default_tax_amount"] ?? "")",
                                  other_taxes_amount: "\(res["other_taxes_amount"] ?? "")",
                                  other_taxes_desc: "\(res["other_taxes_desc"] ?? "")",
@@ -5094,7 +5109,7 @@ class InStoreNewRefundViewController: UIViewController {
                 smallcart.append(cart)
             }
             else {
-                smallcart.append(cart)
+                smallrefcart.append(cart)
             }
         }
         
@@ -6022,16 +6037,19 @@ class InStoreNewRefundViewController: UIViewController {
         scroll.layer.addSublayer(shapeLayer)
     }
     
-    func calTotalPrice(onePrice: String, qty: String, discount: String) -> Double {
+    func calTotalPrice(onePrice: String, qty: String,
+                       discount: String, bogo_dis: String,
+                       overide: String) -> Double {
         
         let price = Double(onePrice) ?? 0.00
         let quant = Double(qty) ?? 0.00
         let dis = Double(discount) ?? 0.00
+        let b_dis = Double(bogo_dis) ?? 0.00
+        let over = Double(overide) ?? 0.00
         
         let total = price * quant
         
-        let dis_price = total - dis
-        
+        let dis_price = total - dis - b_dis - over
         
         return roundOf(item: String(dis_price))
     }
@@ -6170,17 +6188,24 @@ extension InStoreNewRefundViewController: UITableViewDelegate, UITableViewDataSo
             cell.payRefOnePrice.text = "$\(String(format: "%.02f", roundOf(item: cart.inventory_price)))"
             cell.payRefQty.text = "\(cart.refund_qty)x"
             
-            if cart.discount_amt == "0.00" || cart.discount_amt == "0.0" ||
-                cart.discount_amt == "-0.00" || cart.discount_amt == "-0.0" ||
-                cart.discount_amt == "0" || cart.discount_amt == "-0" ||
-                cart.discount_amt == "" || cart.discount_amt.contains("null") {
-                cell.itemRefDiscountLbl.text = ""
+            if cart.discount_amt != "0.0" && cart.discount_amt != "0.00" &&
+                cart.discount_amt != "-0.00" && cart.discount_amt != "-0.0" &&
+                cart.discount_amt != "0" && cart.discount_amt != "" {
+                
+                cell.itemRefDiscountLbl.text = "Item Discount(-$\(String(format: "%.02f", roundOf(item: cart.discount_amt))))"
+                cell.itemRefDisValue.text = ""
+            }
+            else if cart.bogo_discount != "0.0" && cart.bogo_discount != "0.00" &&
+                        cart.bogo_discount != "-0.00" && cart.bogo_discount != "-0.0" &&
+                        cart.bogo_discount != "0" && cart.bogo_discount != "" {
+                
+                cell.itemRefDiscountLbl.text = "Bogo Deal(-$\(String(format: "%.02f", roundOf(item: cart.bogo_discount))))"
                 cell.itemRefDisValue.text = ""
             }
             else {
                 
-                cell.itemRefDiscountLbl.text = "Item Discount"
-                cell.itemRefDisValue.text = "-$\(String(format: "%.02f", roundOf(item: cart.discount_amt)))"
+                cell.itemRefDiscountLbl.text = ""
+                cell.itemRefDisValue.text = ""
             }
             
             if cart.adjust_price != "0.0" && cart.adjust_price != "0.00" &&
@@ -6206,7 +6231,7 @@ extension InStoreNewRefundViewController: UITableViewDelegate, UITableViewDataSo
                 }
             }
             
-            cell.payRefTotalPrice.text = "$\(String(format: "%.02f", calTotalPrice(onePrice: cart.inventory_price, qty: cart.refund_qty, discount: cart.discount_amt)))"
+            cell.payRefTotalPrice.text = "$\(String(format: "%.02f", calTotalPrice(onePrice: cart.inventory_price, qty: cart.refund_qty, discount: cart.discount_amt, bogo_dis: cart.bogo_discount, overide: cart.adjust_price))))"
             
             
             return cell
@@ -6230,20 +6255,27 @@ extension InStoreNewRefundViewController: UITableViewDelegate, UITableViewDataSo
             
             cell.payRefOnePrice.text = "$\(String(format: "%.02f", roundOf(item: cart.inventory_price)))"
             cell.payRefQty.text = "\(cart.qty)x"
-          
             
-            if cart.discount_amt == "0.00" || cart.discount_amt == "0.0" ||
-                cart.discount_amt == "-0.00" || cart.discount_amt == "-0.0" ||
-                cart.discount_amt == "0" || cart.discount_amt == "-0" ||
-                cart.discount_amt == "" || cart.discount_amt.contains("null") {
+            if cart.discount_amt != "0.0" && cart.discount_amt != "0.00" &&
+                cart.discount_amt != "-0.00" && cart.discount_amt != "-0.0" &&
+                cart.discount_amt != "0" && cart.discount_amt != "" {
+                
+                cell.itemRefDiscountLbl.text = "Item Discount(-$\(String(format: "%.02f", roundOf(item: cart.discount_amt))))"
+                cell.itemRefDisValue.text = ""
+            }
+            
+            else if cart.bogo_discount != "0.0" && cart.bogo_discount != "0.00" &&
+                        cart.bogo_discount != "-0.00" && cart.bogo_discount != "-0.0" &&
+                        cart.bogo_discount != "0" && cart.bogo_discount != "" {
+                
+                cell.itemRefDiscountLbl.text = "Bogo Deal(-$\(String(format: "%.02f", roundOf(item: cart.bogo_discount))))"
+                cell.itemRefDisValue.text = ""
+            }
+            
+            else {
                 
                 cell.itemRefDiscountLbl.text = ""
                 cell.itemRefDisValue.text = ""
-            }
-            else {
-                
-                cell.itemRefDiscountLbl.text = "Item Discount"
-                cell.itemRefDisValue.text = "-$\(String(format: "%.02f", roundOf(item: cart.discount_amt)))"
             }
             
             if cart.adjust_price != "0.0" && cart.adjust_price != "0.00" &&
@@ -6268,7 +6300,7 @@ extension InStoreNewRefundViewController: UITableViewDelegate, UITableViewDataSo
                 }
             }
             
-            cell.payRefTotalPrice.text = "$\(String(format: "%.02f", calTotalPrice(onePrice: cart.inventory_price, qty: cart.qty, discount: cart.discount_amt)))"
+            cell.payRefTotalPrice.text = "$\(String(format: "%.02f", calTotalPrice(onePrice: cart.inventory_price, qty: cart.qty, discount: cart.discount_amt, bogo_dis: cart.bogo_discount, overide: cart.adjust_price)))"
             
             
             return cell

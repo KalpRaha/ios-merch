@@ -31,6 +31,7 @@ class StockItemsViewController: UIViewController {
     
     var addNewQty = [String]()
     var discrepancyAdd = [String]()
+    var noteAdd = [String]()
     
     var variantList = [InventoryVariant]()
     var stockVarList = [InventoryVariant]()
@@ -186,7 +187,8 @@ class StockItemsViewController: UIViewController {
                                       current_qty: "\(res["current_qty"] ?? "")", new_qty: "\(res["new_qty"] ?? "")",
                                       discrepancy: "\(res["discrepancy"] ?? "")", discrepancy_cost: "\(res["discrepancy_cost"] ?? "")",
                                       merchant_id: "\(res["merchant_id"] ?? "")", employee_id: "\(res["employee_id"] ?? "")",
-                                      created_at: "\(res["created_at"] ?? "")", updated_at: "\(res["updated_at"] ?? "")")
+                                      created_at: "\(res["created_at"] ?? "")", updated_at: "\(res["updated_at"] ?? "")",
+                                      note: "\(res["note"] ?? "")")
             small.append(stockItem)
             
             let stockEmail = StockItemEmail(product_name: "\(res["product_name"] ?? "")",
@@ -205,6 +207,7 @@ class StockItemsViewController: UIViewController {
         for qty in stockItemList {
             addNewQty.append(qty.new_qty)
             discrepancyAdd.append(qty.discrepancy)
+            noteAdd.append(qty.note)
         }
         
         variantListApi()
@@ -621,6 +624,7 @@ extension StockItemsViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
        
+        cell.noteValue.text = item.note
         
         return cell
     }
@@ -664,6 +668,7 @@ struct StockItem {
     let employee_id: String
     let created_at: String
     let updated_at: String
+    let note: String
 }
 
 

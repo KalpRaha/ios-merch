@@ -27,7 +27,7 @@ class SetupViewController: UIViewController, UITextViewDelegate {
     ["Register Settings", "QuickAdd"]
     //"Mix n' Match Pricing","Inventory","Company Info",]
     
-    let moreList = ["Mix n' Match Pricing", "Coupons", "Loyalty Program", "Gift Card"]//, "BOGO"]
+    let moreList = ["Mix n' Match Pricing", "Coupons", "Loyalty Program", "Gift Card", "BOGO"]
   
     
     var more = false
@@ -472,7 +472,13 @@ extension SetupViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 
                 else {
-                    performSegue(withIdentifier: "toBogo", sender: nil)
+                    if UserDefaults.standard.bool(forKey: "lock_bogo") {
+                        ToastClass.sharedToast.showToast(message: "Access Denied",
+                                                         font: UIFont(name: "Manrope-SemiBold", size: 14.0)!)
+                    }
+                    else {
+                        performSegue(withIdentifier: "toBogo", sender: nil)
+                    }
                 }
             }
             

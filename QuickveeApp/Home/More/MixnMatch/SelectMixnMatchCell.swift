@@ -21,6 +21,15 @@ class SelectMixnMatchCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        titleLbl.adjustsFontSizeToFitWidth = true
+        titleLbl.minimumScaleFactor = 0.5
+        priceLbl.adjustsFontSizeToFitWidth = true
+        priceLbl.minimumScaleFactor = 0.5
+        upcLabel.adjustsFontSizeToFitWidth = true
+        upcLabel.minimumScaleFactor = 0.5
+        varientLbl.adjustsFontSizeToFitWidth = true
+        varientLbl.minimumScaleFactor = 0.5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

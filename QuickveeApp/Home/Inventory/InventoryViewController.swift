@@ -114,8 +114,6 @@ class InventoryViewController: UIViewController {
         backBtn.alpha = 1
         invent_lbl.alpha = 1
         searchBar.showsCancelButton = true
-        searchBar.iq.resignOnTouchOutsideMode = .enabled
-        searchBar.iq.toolbar.doneBarButton
         
        
         

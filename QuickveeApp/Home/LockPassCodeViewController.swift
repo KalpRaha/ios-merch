@@ -166,7 +166,8 @@ class LockPassCodeViewController: UIViewController {
                 
                 setupUI()
                 
-                setupPassApi(pin: pinCode)
+                getEmpId(pin: pinCode)
+              //  setupPassApi(pin: pinCode)
             }
         }
     }
@@ -265,26 +266,31 @@ class LockPassCodeViewController: UIViewController {
         alertController.addAction(yesAction)
         self.present(alertController, animated: true, completion:nil)
     }
-
-    func setupPassApi(pin: String) {
-        
-        let merchant = UserDefaults.standard.string(forKey: "merchant_id") ?? ""
-        
-        ApiCalls.sharedCall.passCodeCall(merchant_id: merchant) { isSuccess, responseData in
-            
-            if isSuccess {
-                
-                if let variant = responseData["status"], variant as! Int != 0  {
-
-                    self.getEmpId(variant: responseData["result"])
-                }
-                
-                else {
-                    self.invalid()
-                }
-            }
-        }
-    }
+//
+//    func setupPassApi(pin: String) {
+//        
+//        let merchant = UserDefaults.standard.string(forKey: "merchant_id") ?? ""
+//        
+//        ApiCalls.sharedCall.passCodeCall(merchant_id: merchant) { isSuccess, responseData in
+//            
+//            print(responseData)
+//            if isSuccess {
+//                
+//                if let variant = responseData["status"], variant as! Int != 0  {
+//
+//                    self.getEmpId(variant: responseData["result"])
+//                }
+//                
+//                else {
+//                    self.invalid()
+//                }
+//            }
+//            else {
+//                print(responseData)
+//
+//            }
+//        }
+//    }
     
     func codePermission(per_array: [String]) {
         
@@ -564,6 +570,36 @@ class LockPassCodeViewController: UIViewController {
             UserDefaults.standard.set(true, forKey: "delete_mix_match")
         }
         
+        //bogo
+        if per_array.contains("ABG") {
+            UserDefaults.standard.set(false, forKey: "lock_bogo")
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "lock_bogo")
+        }
+        
+        if per_array.contains("BA") {
+            UserDefaults.standard.set(false, forKey: "add_bogo")
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "add_bogo")
+        }
+        
+        if per_array.contains("BE") {
+            UserDefaults.standard.set(false, forKey: "edit_bogo")
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "edit_bogo")
+        }
+        
+        if per_array.contains("BD") {
+            UserDefaults.standard.set(false, forKey: "delete_bogo")
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "delete_bogo")
+        }
+        
+     
         // store settings
         
         if per_array.contains("AS") {
@@ -954,49 +990,53 @@ class LockPassCodeViewController: UIViewController {
         }
     }
     
-    func getEmpId(variant: Any) {
+    func getEmpId(pin: String) {
         
-        let variant_emp = variant as! [[String: Any]]
         var per_array = [String]()
-        
         var match_found = false
-        print(pinCode)
+        var variant_emp = [PassEmp]()
+       
+            if let data = UserDefaults.standard.object(forKey: "employee_array") as? Data,
+               let category = try? JSONDecoder().decode([PassEmp].self, from: data) {
+                variant_emp = category
+            }
+        
         for vari in variant_emp {
             
-            let pin = vari["pin"] as? String ?? ""
+            let pin = vari.pin
             
             if pin == pinCode {
                 
                 match_found = true
-                
-                let emp = PassEmp(id: "\(vari["id"] ?? "")", f_name: "\(vari["f_name"] ?? "")",
-                                  l_name: "\(vari["l_name"] ?? "")", phone: "\(vari["phone"] ?? "")",
-                                  email: "\(vari["email"] ?? "")", pin: "\(vari["pin"] ?? "")",
-                                  wages_per_hr: "\(vari["wages_per_hr"] ?? "")", role: "\(vari["role"] ?? "")",
-                                  merchant_id: "\(vari["merchant_id"] ?? "")", admin_id: "\(vari["admin_id"] ?? "")",
-                                  address: "\(vari["address"] ?? "")", city: "\(vari["city"] ?? "")",
-                                  state: "\(vari["state"] ?? "")", zipcode: "\(vari["zipcode"] ?? "")",
-                                  is_employee: "\(vari["is_employee"] ?? "")", permissions: "\(vari["permissions"] ?? "")",
-                                  break_time: "\(vari["break_time"] ?? "")", break_allowed: "\(vari["break_allowed"] ?? "")",
-                                  is_login: "\(vari["is_login"] ?? "")", login_time: "\(vari["login_time"] ?? "")",
-                                  status: "\(vari["status"] ?? "")", created_from: "\(vari["created_from"] ?? "")",
-                                  created_at: "\(vari["created_at"] ?? "")", updated_from: "\(vari["updated_from"] ?? "")",
-                                  updated_at: "\(vari["updated_at"] ?? "")", menu_list: "\(vari["menu_list"] ?? "")",
-                                  enable_backend_access: "\(vari["enable_backend_access"] ?? "")",
-                                  enable_pos_access: "\(vari["enable_pos_access"] ?? "")",
-                                  password: "\(vari["password"] ?? "")", read_pass: "\(vari["read_pass"] ?? "")",
-                                  assigned_store: "\(vari["assigned_store"] ?? "")", is_admin: "\(vari["is_admin"] ?? "")")
-                
-                let permission = emp.permissions
+//                
+//                let emp = PassEmp(id: "\(vari["id"] ?? "")", f_name: "\(vari["f_name"] ?? "")",
+//                                  l_name: "\(vari["l_name"] ?? "")", phone: "\(vari["phone"] ?? "")",
+//                                  email: "\(vari["email"] ?? "")", pin: "\(vari["pin"] ?? "")",
+//                                  wages_per_hr: "\(vari["wages_per_hr"] ?? "")", role: "\(vari["role"] ?? "")",
+//                                  merchant_id: "\(vari["merchant_id"] ?? "")", admin_id: "\(vari["admin_id"] ?? "")",
+//                                  address: "\(vari["address"] ?? "")", city: "\(vari["city"] ?? "")",
+//                                  state: "\(vari["state"] ?? "")", zipcode: "\(vari["zipcode"] ?? "")",
+//                                  is_employee: "\(vari["is_employee"] ?? "")", permissions: "\(vari["permissions"] ?? "")",
+//                                  break_time: "\(vari["break_time"] ?? "")", break_allowed: "\(vari["break_allowed"] ?? "")",
+//                                  is_login: "\(vari["is_login"] ?? "")", login_time: "\(vari["login_time"] ?? "")",
+//                                  status: "\(vari["status"] ?? "")", created_from: "\(vari["created_from"] ?? "")",
+//                                  created_at: "\(vari["created_at"] ?? "")", updated_from: "\(vari["updated_from"] ?? "")",
+//                                  updated_at: "\(vari["updated_at"] ?? "")", menu_list: "\(vari["menu_list"] ?? "")",
+//                                  enable_backend_access: "\(vari["enable_backend_access"] ?? "")",
+//                                  enable_pos_access: "\(vari["enable_pos_access"] ?? "")",
+//                                  password: "\(vari["password"] ?? "")", read_pass: "\(vari["read_pass"] ?? "")",
+//                                  assigned_store: "\(vari["assigned_store"] ?? "")", is_admin: "\(vari["is_admin"] ?? "")")
+//                
+                let permission = vari.permissions
                 per_array = permission.components(separatedBy: ",")
                 
-                let emp_id = emp.id
-                let emp_name = emp.f_name
+                let emp_id = vari.id
+                let emp_name = vari.f_name
                 
-                let email = emp.email
-                let read = emp.read_pass
-                let enable_backend = emp.enable_backend_access
-                let assigned_store = emp.assigned_store
+                let email = vari.email
+                let read = vari.read_pass
+                let enable_backend = vari.enable_backend_access
+                let assigned_store = vari.assigned_store
                 
                 UserDefaults.standard.set(emp_id, forKey: "emp_po_id")
                 UserDefaults.standard.set(emp_name, forKey: "merchant_name")

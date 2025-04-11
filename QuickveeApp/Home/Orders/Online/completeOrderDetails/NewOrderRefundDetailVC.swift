@@ -17,7 +17,6 @@ class NewOrderRefundDetailVC: UIViewController {
     @IBOutlet weak var orderStatusLabel: UILabel!
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var statusHeight: NSLayoutConstraint!
-    @IBOutlet weak var delViewheightConstraint: NSLayoutConstraint!
     @IBOutlet weak var onlineOrderLbl: UILabel!
     @IBOutlet weak var onlineOrderTableView: UITableView!
     @IBOutlet weak var onlineOrderTableHeight: NSLayoutConstraint!
@@ -645,12 +644,13 @@ class NewOrderRefundDetailVC: UIViewController {
         let fees = String(format:"%.02f", otherFees)
         return String(fees)
     }
-    func calculateTotalPrice(p_price: String, q_qty :String)  -> String {
+   
+    func calculateTotalPrice(p_price: String, bogoDis :String)  -> String {
         
         let p_rice = roundOf(item: p_price)
-        let q_ty = roundOf(item: q_qty)
+        let bogoDis = roundOf(item: bogoDis)
         
-        let t_price = p_rice * q_ty
+        let t_price = p_rice - bogoDis
         print(t_price)
         let final_price = String(format:"%.02f", t_price)
         print(final_price)
@@ -1248,6 +1248,7 @@ class NewOrderRefundDetailVC: UIViewController {
                                           discount_amt: "\(cartItem["discount_amt"] ?? "")",
                                           discount_rate: "\(cartItem["discount_rate"] ?? "")",
                                           adjust_price: "\(cartItem["adjust_price"] ?? "")",
+                                          bogo_discount: "\(cartItem["bogo_discount"] ?? "")",
                                           use_point: "\(cartItem["use_point"] ?? "")",
                                           earn_point: "\(cartItem["earn_point"] ?? "")",
                                           is_lottery: "\(cartItem["is_lottery"] ?? "")",
@@ -2022,10 +2023,18 @@ extension NewOrderRefundDetailVC : UITableViewDelegate, UITableViewDataSource {
             
             cell.qty.text = "\(arrofCartData[indexPath.row].qty)x"
             
-            var t_price = calculateTotalPrice(p_price: arrofCartData[indexPath.row].inventory_price , q_qty: arrofCartData[indexPath.row].qty)
+            var t_price = calculateTotalPrice(p_price: arrofCartData[indexPath.row].inventory_price , bogoDis: arrofCartData[indexPath.row].bogo_discount)
             print(t_price)
             cell.totalPrice.text = "$\(t_price)"
             
+            if arrofCartData[indexPath.row].bogo_discount == "0.00" {
+                cell.bogoDiscountLbl.isHidden = true
+            }
+            else {
+                cell.bogoDiscountLbl.isHidden = false
+                cell.bogoDiscountLbl.text = "BOGO Deal(-$\(arrofCartData[indexPath.row].bogo_discount))"
+            }
+        
             let selectedBackgroundView = UIView()
             selectedBackgroundView.backgroundColor = UIColor.clear
             cell.selectedBackgroundView = selectedBackgroundView
@@ -2039,16 +2048,26 @@ extension NewOrderRefundDetailVC : UITableViewDelegate, UITableViewDataSource {
             let note = cart.note.replacingOccurrences(of: "~", with: "\n")
             cell.name.text = note.replacingOccurrences(of: "Name-", with: "")
             
-            cell.offerLbl.isHidden = true
             let in_price = roundOf(item: arrofRefCartData[indexPath.row].inventory_price)
             print(in_price)
             
             cell.price.text = "$\(String(format: "%.2f", in_price))"
             cell.qty.text = "\(arrofRefCartData[indexPath.row].refund_qty)x"
             
-            var t_price = calculateTotalPrice(p_price: arrofRefCartData[indexPath.row].inventory_price , q_qty: arrofRefCartData[indexPath.row].refund_qty)
+            var t_price = calculateTotalPrice(p_price: arrofRefCartData[indexPath.row].inventory_price , bogoDis: arrofRefCartData[indexPath.row].bogo_discount)
             print(t_price)
             cell.totalPrice.text = "$\(t_price)"
+            
+            
+            if arrofRefCartData[indexPath.row].bogo_discount == "0.00" {
+                cell.bogoDiscountLbl.isHidden = true
+            }
+            else {
+                cell.bogoDiscountLbl.isHidden = false
+                cell.bogoDiscountLbl.text = "BOGO Deal(-$\(arrofRefCartData[indexPath.row].bogo_discount))"
+            }
+            
+            
             
             let selectedBackgroundView = UIView()
             selectedBackgroundView.backgroundColor = UIColor.clear

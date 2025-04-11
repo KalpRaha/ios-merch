@@ -50,7 +50,6 @@ class CustomerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.showsCancelButton = true
-        searchBar.iq.resignOnTouchOutsideMode = .enabled
         searchBar.placeholder = "Search Customer"
         searchBar.searchBarStyle = .minimal
         searchBar.delegate = self

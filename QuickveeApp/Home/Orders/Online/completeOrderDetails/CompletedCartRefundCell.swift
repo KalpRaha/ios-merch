@@ -10,11 +10,11 @@ import UIKit
 class CompletedCartRefundCell: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var offerLbl: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var qty: UILabel!
     @IBOutlet weak var totalPrice: UILabel!
    
+    @IBOutlet weak var bogoDiscountLbl: UILabel!
     
     
     override func awakeFromNib() {

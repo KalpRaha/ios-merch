@@ -305,7 +305,7 @@ class MixnMatchPricingViewController: UIViewController {
         for items in response {
             
             let bogodeal = BogoModel(id: "\(items["id"] ?? "")",
-                                     merchant_id: "\(items["mrchant_id"] ?? "" )",
+                                     merchant_id: "\(items["merchant_id"] ?? "" )",
                                      start_date: "\(items["start_date"] ?? "")",
                                      end_date: "\(items["end_date"] ?? "")",
                                      deal_name: "\(items["deal_name"] ?? "")",

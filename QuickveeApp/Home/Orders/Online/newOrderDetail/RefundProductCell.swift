@@ -10,11 +10,12 @@ import UIKit
 class RefundProductCell: UITableViewCell {
 
     @IBOutlet weak var RefundProductLbl: UILabel!
-    @IBOutlet weak var offerLbl: UILabel!
+    
     @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var qtylbl: UILabel!
     @IBOutlet weak var totalPriceLbl: UILabel!
     
+    @IBOutlet weak var bogoDiscountLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

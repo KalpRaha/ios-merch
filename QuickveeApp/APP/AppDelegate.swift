@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//
+//+
 //
 //  Created by Jamaluddin Syed on 09/01/23.
 //
@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 import IQKeyboardManagerSwift
-
+import IQKeyboardToolbarManager
 import FirebaseCore
 import FirebaseAnalytics
 import FirebaseMessaging
@@ -39,9 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         application.registerForRemoteNotifications()
         
         IQKeyboardManager.shared.resignOnTouchOutside = true
-        IQKeyboardManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
-        IQKeyboardManager.shared.enable = true
-        
+        IQKeyboardToolbarManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = true
+        IQKeyboardManager.shared.isEnabled = true
+        IQKeyboardToolbarManager.shared.isEnabled = true
         
         if !UserDefaults.standard.bool(forKey: "hasAppLaunchedOnce") {
             //app opened first time

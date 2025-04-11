@@ -717,12 +717,12 @@ class NewOrderDetailVC: UIViewController {
     }
     
     
-    func calculateTotalPrice(p_price: String, q_qty :String)  -> String {
+    func calculateTotalPrice(p_price: String, bogoDis :String)  -> String {
         
         let p_rice = roundOf(item: p_price)
-        let q_ty = roundOf(item: q_qty)
+        let bogoDis = roundOf(item: bogoDis)
         
-        let t_price = p_rice * q_ty
+        let t_price = p_rice - bogoDis
         print(t_price)
         let final_price = String(format:"%.02f", t_price)
         print(final_price)
@@ -1352,6 +1352,7 @@ class NewOrderDetailVC: UIViewController {
                                        discount_amt: "\(cartItem["discount_amt"] ?? "" )",
                                        discount_rate: "\(cartItem["discount_rate"] ?? "" )",
                                        adjust_price: "\(cartItem["adjust_price"] ?? "" )",
+                                       bogo_discount: "\(cartItem["bogo_discount"] ?? "" )",
                                        use_point: "\(cartItem["use_point"] ?? "" )",
                                        earn_point: "\(cartItem["earn_point"] ?? "" )",
                                        is_lottery: "\(cartItem["is_lottery"] ?? "" )",
@@ -2901,9 +2902,20 @@ extension NewOrderDetailVC : UITableViewDelegate , UITableViewDataSource {
             let onlieQty = arrofCartData[indexPath.row].qty
             
             
-            var t_price = calculateTotalPrice(p_price: arrofCartData[indexPath.row].inventory_price , q_qty: arrofCartData[indexPath.row].qty)
+            var t_price = calculateTotalPrice(p_price: arrofCartData[indexPath.row].inventory_price , bogoDis: arrofCartData[indexPath.row].bogo_discount)
             print(t_price)
             cell.totalPriceLbl.text = "$\(t_price)"
+            
+            
+            if arrofCartData[indexPath.row].bogo_discount == "0.00" {
+                cell.bogoDiscoutLbl.isHidden = true
+            }
+            else {
+                cell.bogoDiscoutLbl.isHidden = false
+                cell.bogoDiscoutLbl.text = "BOGO Deal(-$\(arrofCartData[indexPath.row].bogo_discount))"
+            }
+            
+            
             
             let selectedBackgroundView = UIView()
             selectedBackgroundView.backgroundColor = UIColor.clear
@@ -2914,7 +2926,7 @@ extension NewOrderDetailVC : UITableViewDelegate , UITableViewDataSource {
         else if tableView == refundProductTableView {
             
             let cell = refundProductTableView.dequeueReusableCell(withIdentifier: "RefundProductCell", for: indexPath) as! RefundProductCell
-            cell.offerLbl.isHidden = true
+            
             
             let cart = arrofCartRefundData[indexPath.row]
             let note = cart.note.replacingOccurrences(of: "~", with: "\n")
@@ -2923,8 +2935,16 @@ extension NewOrderDetailVC : UITableViewDelegate , UITableViewDataSource {
             cell.priceLbl.text = "$\(String(format: "%.2f", price))"
             
             cell.qtylbl.text = "\(arrofCartRefundData[indexPath.row].refund_qty)x"
-            var t_price = calculateTotalPrice(p_price: arrofCartRefundData[indexPath.row].inventory_price , q_qty: arrofCartRefundData[indexPath.row].refund_qty)
+            var t_price = calculateTotalPrice(p_price: arrofCartRefundData[indexPath.row].inventory_price , bogoDis: arrofCartRefundData[indexPath.row].bogo_discount)
             cell.totalPriceLbl.text = "$\(t_price)"
+            
+            if arrofCartRefundData[indexPath.row].bogo_discount == "0.00" {
+                cell.bogoDiscountLbl.isHidden = true
+            }
+            else {
+                cell.bogoDiscountLbl.isHidden = false
+                cell.bogoDiscountLbl.text = "BOGO Deal(-$\(arrofCartRefundData[indexPath.row].bogo_discount))"
+            }
             
             
             let selectedBackgroundView = UIView()
@@ -3128,6 +3148,7 @@ struct Cartdata {
     var discount_amt: String
     var discount_rate: String
     var adjust_price: String
+    var bogo_discount: String
     var use_point: String
     var earn_point: String
     var is_lottery: String

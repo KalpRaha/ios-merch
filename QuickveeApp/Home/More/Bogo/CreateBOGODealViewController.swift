@@ -65,7 +65,6 @@ class CreateBOGODealViewController: UIViewController, UITextFieldDelegate {
     
     var varient_List = [BogoVariantModel]()
     
-    var widthArr = [String]()
     var activeTextField = UITextField()
     var selectedAllEditIds = [String]()
     
@@ -164,13 +163,14 @@ class CreateBOGODealViewController: UIViewController, UITextFieldDelegate {
             let sdate = ToastClass.sharedToast.setCouponsDateFormat(dateStr: startdate)
             let edate = ToastClass.sharedToast.setCouponsDateFormat(dateStr: enddate)
             
-            if startdate ==  "0000-00-00" {
+            if bogoObj?.no_end_date == "1" {
                 
                 dateStackHeightConstraint.constant = 0
                 startEndDateStack.isHidden = true
                 noEndDateSwitch.isOn = true
                 noEndDateSwitch.thumbTintColor = .systemBlue
                 startDate.text = ""
+                endDate.text = ""
                 
             }else {
                 startEndDateStack.isHidden = false
@@ -178,24 +178,9 @@ class CreateBOGODealViewController: UIViewController, UITextFieldDelegate {
                 noEndDateSwitch.isOn = false
                 noEndDateSwitch.thumbTintColor = .white
                 startDate.text = sdate
-                
-            }
-            
-            if enddate ==  "0000-00-00" {
-                
-                startEndDateStack.isHidden = true
-                dateStackHeightConstraint.constant = 0
-                noEndDateSwitch.isOn = true
-                noEndDateSwitch.thumbTintColor = .systemBlue
-                endDate.text = ""
-            }else {
-                
-                startEndDateStack.isHidden = false
-                dateStackHeightConstraint.constant = 53
-                noEndDateSwitch.isOn = false
-                noEndDateSwitch.thumbTintColor = .white
                 endDate.text = edate
             }
+            
             
             if noEndDateSwitch.isOn {
                 noEndDate = "1"
@@ -283,7 +268,8 @@ class CreateBOGODealViewController: UIViewController, UITextFieldDelegate {
         }
         
         if noEndDateSwitch.isOn {
-            
+            startDate.text = ""
+            endDate.text = ""
             
         }
         else {
@@ -440,23 +426,19 @@ class CreateBOGODealViewController: UIViewController, UITextFieldDelegate {
             
             if isSuccess {
                 
-                let list = responseData["msg"]
-                
-                
-                ToastClass.sharedToast.showToast(message: list as! String,
-                                                 font: UIFont(name: "Manrope-SemiBold", size: 14.0)!)
+                let msg = responseData["msg"] as? String ?? ""
                 
                 self.loadIndicator.isAnimating = false
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                ToastClass.sharedToast.showToast(message: msg,
+                                                 font: UIFont(name: "Manrope-SemiBold", size: 14.0)!)
+                
+                if msg == "BOGO deal added successfully." || msg == "BOGO deal updated successfully." {
                     self.navigationController?.popViewController(animated: true)
                 }
-                
             }
             else {
                 print("Api Error")
             }
-            
-            self.doneBtn.isEnabled = true
         }
     }
     
@@ -469,9 +451,7 @@ class CreateBOGODealViewController: UIViewController, UITextFieldDelegate {
             if isSuccess {
                 
                 let list = responceData["msg"] as! String
-                
-                print(list)
-                
+                                
                 ToastClass.sharedToast.showToast(message: list, font: UIFont(name: "Manrope-SemiBold", size: 14.0)!)
                 
                 self.loadingIndicator.isAnimating = false
@@ -501,18 +481,25 @@ class CreateBOGODealViewController: UIViewController, UITextFieldDelegate {
         
         if cancelBtn.currentTitle == "Delete" {
             
-            let alertController = UIAlertController(title: "Alert", message: "Are you sure you want to delete this deal?", preferredStyle: .alert)
-            
-            let cancel = UIAlertAction(title: "No", style: .default) { (action:UIAlertAction!) in
+            if UserDefaults.standard.bool(forKey: "delete_bogo") {
+                ToastClass.sharedToast.showToast(message: "Access Denied",
+                                                 font: UIFont(name: "Manrope-SemiBold", size: 14.0)!)
             }
-            let okAction = UIAlertAction(title: "Yes", style: .default) { (action:UIAlertAction!) in
+            else {
                 
-                self.deletAPiCall()
+                let alertController = UIAlertController(title: "Alert", message: "Are you sure you want to delete this deal?", preferredStyle: .alert)
+                
+                let cancel = UIAlertAction(title: "No", style: .default) { (action:UIAlertAction!) in
+                }
+                let okAction = UIAlertAction(title: "Yes", style: .default) { (action:UIAlertAction!) in
+                    
+                    self.deletAPiCall()
+                }
+                
+                alertController.addAction(cancel)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion:nil)
             }
-            
-            alertController.addAction(cancel)
-            alertController.addAction(okAction)
-            self.present(alertController, animated: true, completion:nil)
         }
         else {
             
@@ -623,47 +610,6 @@ class CreateBOGODealViewController: UIViewController, UITextFieldDelegate {
         present(vc, animated: true, completion: {
             vc.presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false
         })
-    }
-    
-    func getWidth() {
-        
-        let lbl = UILabel()
-        var smallWidth = [String]()
-        
-        for varient in  variantArray {
-            
-            if varient.bogo.isvarient == "1" {
-                
-                lbl.text = "$\(varient.bogo.var_price)"
-            }
-            else {
-                lbl.text = "$\(varient.bogo.price)"
-                
-            }
-            lbl.font = UIFont(name: "Manrope-Bold", size: 18.0)
-            lbl.sizeToFit()
-            let w = lbl.frame.size.width + 10.0
-            smallWidth.append(String(format: "%.2f", w))
-        }
-        
-        widthArr = smallWidth
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        activeTextField = textField
-        
-        if activeTextField == startDate || activeTextField == endDate {
-            openDatePicker(textField: activeTextField, tag: activeTextField.tag)
-        }
-        else if activeTextField == discountperItemTextfield {
-            activeTextField = textField
-        }
-        else if activeTextField == qtyTextfield {
-            activeTextField = textField
-        }
-        else if activeTextField == discountQtyTextfield {
-            activeTextField = textField
-        }
     }
     
     func checkPrice(varamt: String, textAmt: String) -> Bool {
@@ -824,7 +770,6 @@ class CreateBOGODealViewController: UIViewController, UITextFieldDelegate {
         
         
         subvarArray = variantArray
-        getWidth()
         
         if variantArray.count == 0 {
             searchBar.isHidden = true
@@ -1088,8 +1033,24 @@ extension CreateBOGODealViewController {
         tableView.reloadData()
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeTextField = textField
+        
+        if activeTextField == startDate || activeTextField == endDate {
+            openDatePicker(textField: activeTextField, tag: activeTextField.tag)
+        }
+        else if activeTextField == discountperItemTextfield {
+            activeTextField = textField
+        }
+        else if activeTextField == qtyTextfield {
+            activeTextField = textField
+        }
+        else if activeTextField == discountQtyTextfield {
+            activeTextField = textField
+        }
+    }
     
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         
         let qty = Int(qtyTextfield.text ?? "0") ?? 0
         let freeQty = Int(discountQtyTextfield.text ?? "0") ?? 0
@@ -1113,17 +1074,7 @@ extension CreateBOGODealViewController {
                 dollarAmt = ""
             }
             
-            if textField.text == "" || textField.text == "0.00"{
-                variantArray = subvarArray
-                tableView.reloadData()
-            }
-            
         }
-        else if textField == qtyTextfield || textField == discountQtyTextfield  {
-            
-            
-        }
-        
         
         guard qty > 0, freeQty > 0, qty > freeQty, discount > 0.00 else {
             describeDealTextfield.text = ""
@@ -1349,12 +1300,6 @@ extension CreateBOGODealViewController : UITableViewDelegate, UITableViewDataSou
                 cell.upclbl.text = variant.bogo.upc
             }
             
-            if variantArray.count != 0 {
-                let widthDoub = Double(widthArr[indexPath.row]) ?? 0.00
-                cell.viewWidth.constant = widthDoub
-                cell.contentView.backgroundColor = UIColor.white
-            }
-            
             cell.closeBtn.tag = indexPath.row
             return cell
         }
@@ -1387,12 +1332,6 @@ extension CreateBOGODealViewController : UITableViewDelegate, UITableViewDataSou
                 cell.upclbl.text = variant.bogo.upc
             }
             
-            if variantArray.count != 0 {
-                let widthDoub = Double(widthArr[indexPath.row]) ?? 0.00
-                cell.viewWidth.constant = widthDoub
-                cell.contentView.backgroundColor = UIColor.white
-            }
-            
             cell.closeBtn.tag = indexPath.row
             return cell
             
@@ -1413,10 +1352,6 @@ extension CreateBOGODealViewController : SelectBogoDelegate {
         }
         else {
             searchBar.isHidden = false
-        }
-        
-        if arr.count != 0 {
-            getWidth()
         }
         tableView.reloadData()
         

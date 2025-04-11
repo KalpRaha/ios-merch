@@ -6,9 +6,9 @@
 //
 
 import UIKit
+import MaterialComponents
 
 class StockSaveTableViewCell: UITableViewCell {
-
     
     @IBOutlet weak var borderView: UIView!
     
@@ -23,9 +23,10 @@ class StockSaveTableViewCell: UITableViewCell {
     @IBOutlet weak var qtyValue: UILabel!
     
     @IBOutlet weak var newQtyView: UIView!
-
+    
     @IBOutlet weak var disValue: UILabel!
     
     @IBOutlet weak var newQtyText: UITextField!
-
+    
+    @IBOutlet weak var noteField: MDCOutlinedTextField!
 }

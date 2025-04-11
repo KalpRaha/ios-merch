@@ -59,7 +59,6 @@ class GiftCardViewController: UIViewController {
         backBtn.alpha = 1
         giftCardTitle.alpha = 1
         searchBar.showsCancelButton = true
-        searchBar.iq.resignOnTouchOutsideMode = .enabled
         searchBar.placeholder = "scan or enter gift card"
         
         tableView.delegate = self

@@ -17,7 +17,19 @@ class AddMixnMatchCell: UITableViewCell {
    
     @IBOutlet weak var closeBtn: UIButton!
     
-    @IBOutlet weak var viewWidth: NSLayoutConstraint!
-   
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        
+        titleLbl.adjustsFontSizeToFitWidth = true
+        titleLbl.minimumScaleFactor = 0.5
+        priceLbl.adjustsFontSizeToFitWidth = true
+        priceLbl.minimumScaleFactor = 0.5
+        upclbl.adjustsFontSizeToFitWidth = true
+        upclbl.minimumScaleFactor = 0.5
+        varientlbl.adjustsFontSizeToFitWidth = true
+        varientlbl.minimumScaleFactor = 0.5
+    }
 
 }

@@ -15,24 +15,20 @@ class SelectBogoVariantCell: UITableViewCell {
     @IBOutlet weak var upcLabel: UILabel!
     @IBOutlet weak var varientLbl: UILabel!
     
-    @IBOutlet weak var priceWidth: NSLayoutConstraint!
-    
-    @IBOutlet weak var upcWidth: NSLayoutConstraint!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        titleLbl.adjustsFontSizeToFitWidth = true  // Enable text scaling
+        titleLbl.adjustsFontSizeToFitWidth = true
         titleLbl.minimumScaleFactor = 0.5
         
-        priceLbl.adjustsFontSizeToFitWidth = true  // Enable text scaling
+        priceLbl.adjustsFontSizeToFitWidth = true
         priceLbl.minimumScaleFactor = 0.5
         
-        upcLabel.adjustsFontSizeToFitWidth = true  // Enable text scaling
+        upcLabel.adjustsFontSizeToFitWidth = true
         upcLabel.minimumScaleFactor = 0.5
         
-        varientLbl.adjustsFontSizeToFitWidth = true  // Enable text scaling
+        varientLbl.adjustsFontSizeToFitWidth = true  
         varientLbl.minimumScaleFactor = 0.5
     }
 

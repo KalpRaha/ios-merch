@@ -58,12 +58,13 @@ class BogoListViewController: UIViewController {
         enableAllBtn.isEnabled = false
         enableAllBtn.setImage(UIImage(named: "uncheck inventory"), for: .normal)
         
-        bogoDisableArr = []
         flag = 0
         bogoListApiCall()
     }
     
     func bogoListApiCall() {
+        
+        bogoDisableArr = []
         
         let id = UserDefaults.standard.string(forKey: "merchant_id") ?? ""
         
@@ -73,9 +74,7 @@ class BogoListViewController: UIViewController {
         addBtn.isHidden = true
         noBogolBL.isHidden = true
         clickLbl.isHidden = true
-        
-        print(bogoDisableArr)
-        
+                
         ApiCalls.sharedCall.getBOGOList(merchant_id: id) { isSuccess, responseData in
             
             
@@ -107,7 +106,7 @@ class BogoListViewController: UIViewController {
         for items in response {
             
             let bogodeal = BogoModel(id: "\(items["id"] ?? "")",
-                                     merchant_id: "\(items["mrchant_id"] ?? "" )",
+                                     merchant_id: "\(items["merchant_id"] ?? "" )",
                                      start_date: "\(items["start_date"] ?? "")",
                                      end_date: "\(items["end_date"] ?? "")",
                                      deal_name: "\(items["deal_name"] ?? "")",
@@ -313,8 +312,15 @@ class BogoListViewController: UIViewController {
     }
     
     @IBAction func addBtnClick(_ sender: UIButton) {
-        mode = "add"
-        performSegue(withIdentifier: "toCreateBogo", sender: nil)
+        
+        if UserDefaults.standard.bool(forKey: "add_bogo") {
+            ToastClass.sharedToast.showToast(message: "Access Denied",
+                                             font: UIFont(name: "Manrope-SemiBold", size: 14.0)!)
+        }
+        else {
+            mode = "add"
+            performSegue(withIdentifier: "toCreateBogo", sender: nil)
+        }
     }
     
     
@@ -388,22 +394,11 @@ class BogoListViewController: UIViewController {
         
         var enable_All = ""
         
-        let index = IndexPath(row: sender.tag, section: 0)
-        let cell = tableView.cellForRow(at: index) as! BogoListTableViewCell
-        
         if sender.currentImage == UIImage(named: "uncheck inventory") {
-            
             enable_All = "enable"
-            
-            cell.swichBtn.isOn = true
-            cell.swichBtn.thumbTintColor = .systemBlue
-            
         }
         else {
             enable_All = "disable"
-            
-            cell.swichBtn.isOn = false
-            cell.swichBtn.thumbTintColor = .white
         }
         
         enableAllApiCall(enable_All: enable_All)
@@ -412,19 +407,12 @@ class BogoListViewController: UIViewController {
     func enableAllApiCall(enable_All: String) {
         
         let id = UserDefaults.standard.string(forKey: "merchant_id") ?? ""
+        
         ApiCalls.sharedCall.enableAllBogoApiCall(merchant_id: id, enable_all: enable_All) { isSuccess,responseData in
             
             if isSuccess {
                 
-                let list = responseData["msg"] as? String ?? ""
-                
-                if list == "All records disabled successfully." {
-                    
-                    self.enableAllBtn.setImage(UIImage(named: "uncheck inventory"), for: .normal)
-                }
-                else {
-                    self.enableAllBtn.setImage(UIImage(named: "check inventory"), for: .normal)
-                }
+                self.bogoListApiCall()
             }
             else {
                 print("API Error")
@@ -465,6 +453,33 @@ class BogoListViewController: UIViewController {
         }
     }
 
+   
+    func checkDate(endDate: String) -> Bool {
+    
+        let dateString = endDate
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+
+        if let targetDate = formatter.date(from: dateString) {
+            let currentDate = Date()
+            
+            if targetDate < currentDate {
+                return true
+            } else if targetDate > currentDate {
+                return false
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+    
+    
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toCreateBogo" {
@@ -528,7 +543,11 @@ extension BogoListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.swichBtn.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
         cell.swichBtn.addTarget(self, action: #selector(changeShadow), for: .valueChanged)
         
-        if bogoDisableArr[indexPath.row] == "0" {
+        if checkDate(endDate: bogoList[indexPath.row].end_date) {
+            cell.swichBtn.isOn = true
+            cell.swichBtn.thumbTintColor = .white
+        }
+        else  if bogoDisableArr[indexPath.row] == "0" {
             cell.swichBtn.isOn = true
             cell.swichBtn.thumbTintColor = .systemBlue
         }
@@ -549,10 +568,18 @@ extension BogoListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        mode = "edit"
-        bogoObject = bogoList[indexPath.row]
         
-        performSegue(withIdentifier: "toCreateBogo", sender: nil)
+        if UserDefaults.standard.bool(forKey: "edit_bogo"){
+            ToastClass.sharedToast.showToast(message: "Access Denied",
+                                             font: UIFont(name: "Manrope-SemiBold", size: 15.0)!)
+        }
+        else {
+        
+            mode = "edit"
+            
+            bogoObject = bogoList[indexPath.row]
+            performSegue(withIdentifier: "toCreateBogo", sender: nil)
+        }
     }
 }
 

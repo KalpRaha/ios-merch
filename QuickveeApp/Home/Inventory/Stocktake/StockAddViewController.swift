@@ -11,7 +11,8 @@ import BarcodeScanner
 
 protocol StockAddDelegate: AnyObject {
     
-    func stockAddCheck(variants: [InventoryVariant], addNewQty: [String], disAdd: [String])
+    func stockAddCheck(variants: [InventoryVariant], addNewQty: [String],
+                       disAdd: [String], noteAdd: [String])
 }
 
 class StockAddViewController: UIViewController {
@@ -40,6 +41,7 @@ class StockAddViewController: UIViewController {
     var newAddQty = [String]()
     var discrepancyAdd = [String]()
     var stock_Item_Id = [String]()
+    var note = [String]()
     
     var stockList = [StockItem]()
     var substockList = [StockItem]()
@@ -144,6 +146,7 @@ class StockAddViewController: UIViewController {
             selectAddStock.remove(at: pos ?? 0)
             newAddQty.remove(at: pos ?? 0)
             discrepancyAdd.remove(at: pos ?? 0)
+            note.remove(at: pos ?? 0)
             stock_Item_Id.remove(at: pos ?? 0)
         }
         else {
@@ -151,6 +154,7 @@ class StockAddViewController: UIViewController {
             selectAddStock.remove(at: pos ?? 0)
             newAddQty.remove(at: pos ?? 0)
             discrepancyAdd.remove(at: pos ?? 0)
+            note.remove(at: pos ?? 0)
             stock_Item_Id.remove(at: pos ?? 0)
         }
     }
@@ -162,6 +166,7 @@ class StockAddViewController: UIViewController {
             vc.stockItemsList = selectAddStock
             vc.addNewQty = newAddQty
             vc.discrepancyAdd = discrepancyAdd
+            vc.note = note
             vc.mode = "add"
             vc.delegate = self
         }
@@ -175,7 +180,8 @@ class StockAddViewController: UIViewController {
                 ToastClass.sharedToast.showToast(message: "No Variants Selected", font: UIFont(name: "Manrope-SemiBold", size: 14.0)!)
             }
             else {
-                delegate?.stockCheck(variants: selectAddStock, addNew: newAddQty, discrepancy: discrepancyAdd, item_id: stock_Item_Id)
+                delegate?.stockCheck(variants: selectAddStock, addNew: newAddQty,
+                                     discrepancy: discrepancyAdd, item_id: stock_Item_Id, notes: note)
                 dismiss(animated: true)
             }
         }
@@ -284,11 +290,12 @@ extension StockAddViewController: BarcodeScannerCodeDelegate, BarcodeScannerDism
 
 extension StockAddViewController: StockAddDelegate {
     
-    func stockAddCheck(variants: [InventoryVariant], addNewQty: [String], disAdd: [String]) {
+    func stockAddCheck(variants: [InventoryVariant], addNewQty: [String], disAdd: [String], noteAdd: [String]) {
         
         selectAddStock = variants
         newAddQty = addNewQty
         discrepancyAdd = disAdd
+        note = noteAdd
         
         tablview.reloadData()
         
@@ -438,6 +445,7 @@ extension StockAddViewController: UITableViewDelegate, UITableViewDataSource {
                 selectAddStock.append(searchVariantList[indexPath.row])
                 newAddQty.append("")
                 discrepancyAdd.append("")
+                note.append("")
                 stock_Item_Id.append("")
             }
             else {
@@ -453,6 +461,7 @@ extension StockAddViewController: UITableViewDelegate, UITableViewDataSource {
                 selectAddStock.append(variantList[indexPath.row])
                 newAddQty.append("")
                 discrepancyAdd.append("")
+                note.append("")
                 stock_Item_Id.append("")
             }
             else {

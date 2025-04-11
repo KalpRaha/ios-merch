@@ -93,7 +93,6 @@ class CustomerInfoVC: UIViewController {
         
         
         searchBar.showsCancelButton = true
-        searchBar.iq.resignOnTouchOutsideMode = .enabled
         searchBar.searchBarStyle = .minimal
         searchBar.delegate = self
         searchBtn.alpha = 1

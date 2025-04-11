@@ -15,6 +15,7 @@ class CompletedCartOnlineCell: UITableViewCell {
     @IBOutlet weak var qty: UILabel!
     @IBOutlet weak var totalPrice: UILabel!
     
+    @IBOutlet weak var bogoDiscountLbl: UILabel!
     
     
     override func awakeFromNib() {

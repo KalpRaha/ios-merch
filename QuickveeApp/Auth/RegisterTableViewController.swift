@@ -480,13 +480,12 @@ class RegisterTableViewController: UITableViewController, UITextFieldDelegate {
     
     func recaptcha() {
         //    6LfGXowkAAAAAD34dp9lXuvt8zwVDcV0I_kqv9YS real id
-        Task {
-            let (recaptchaClient, error) = await Recaptcha.getClient(siteKey: "6LeJFX0kAAAAAKcitnufe-dgG_XglWpxRHkCWqCl")
+        Recaptcha.fetchClient(withSiteKey: "6LeJFX0kAAAAAKcitnufe-dgG_XglWpxRHkCWqCl") { recaptchaClient, error in
             if let recaptchaClient = recaptchaClient {
                 self.recaptchaClient = recaptchaClient
             }
             if let error = error {
-                print("RecaptchaClient creation error: \(String(describing: error.errorMessage)).")
+                print("RecaptchaClient creation error")
             }
         }
     }
@@ -502,15 +501,12 @@ class RegisterTableViewController: UITableViewController, UITextFieldDelegate {
         }
         
         Task {
-            let (token, error) = await recaptchaClient.execute(RecaptchaAction(action: .login))
-            if let token = token {
-                print(token.recaptchaToken)
-                verifyButton.setTitle("Verify Recaptcha", for: .normal)
-                loadIndicator.isAnimating = false
-                showAlert(title: "Success", message: "User Verified", tag: 0)
-                verify = true
-            } else {
-                print(error?.localizedDescription)
+            do {
+                let action = RecaptchaAction(customAction: "login")
+                let token = try await recaptchaClient.execute(withAction: action)
+                print("Token received: \(token)")
+            } catch {
+                print("Error executing reCAPTCHA: \(error.localizedDescription)")
             }
         }
     }

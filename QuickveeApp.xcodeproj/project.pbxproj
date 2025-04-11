@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B2AF9EE7A3054C684E7BF38 /* Pods_QuickveeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D13EA943F19A674E51499DE /* Pods_QuickveeApp.framework */; };
 		A54F2B312BBAB208009B4D53 /* OrderInStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54F2B302BBAB208009B4D53 /* OrderInStoreViewController.swift */; };
 		A54F2B332BBAB3CB009B4D53 /* OrderInStoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54F2B322BBAB3CB009B4D53 /* OrderInStoreTableViewCell.swift */; };
 		A54F2B352BBABA1B009B4D53 /* InStoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54F2B342BBABA1B009B4D53 /* InStoreDetailViewController.swift */; };
@@ -277,15 +276,16 @@
 		D2F9FDB029D5A42900705491 /* VendorFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F9FDAF29D5A42900705491 /* VendorFilterViewController.swift */; };
 		D2FAF7F32BBD67AD00B0B03B /* OrderStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FAF7F22BBD67AD00B0B03B /* OrderStatusViewController.swift */; };
 		D2FFF1582AE924750074344D /* AddVarAttributeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FFF1572AE924750074344D /* AddVarAttributeCell.swift */; };
+		F0C9BD50979803211B7D7180 /* Pods_QuickveeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEFFBBD6B90E217806245727 /* Pods_QuickveeApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		29FB7C80D48FCCE374B3BC73 /* Pods-QuickveeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickveeApp.debug.xcconfig"; path = "Target Support Files/Pods-QuickveeApp/Pods-QuickveeApp.debug.xcconfig"; sourceTree = "<group>"; };
-		6D13EA943F19A674E51499DE /* Pods_QuickveeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickveeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		92F779691D626909135EDE96 /* Pods-QuickveeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickveeApp.release.xcconfig"; path = "Target Support Files/Pods-QuickveeApp/Pods-QuickveeApp.release.xcconfig"; sourceTree = "<group>"; };
 		A54F2B302BBAB208009B4D53 /* OrderInStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderInStoreViewController.swift; sourceTree = "<group>"; };
 		A54F2B322BBAB3CB009B4D53 /* OrderInStoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderInStoreTableViewCell.swift; sourceTree = "<group>"; };
 		A54F2B342BBABA1B009B4D53 /* InStoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InStoreDetailViewController.swift; sourceTree = "<group>"; };
 		A54F2B362BBABA46009B4D53 /* InStoreRefundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InStoreRefundViewController.swift; sourceTree = "<group>"; };
+		AADD739C252881782D2EFDF5 /* Pods-QuickveeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickveeApp.debug.xcconfig"; path = "Target Support Files/Pods-QuickveeApp/Pods-QuickveeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D20200A52A0DFEB7007D926F /* SearchVendorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVendorTableViewCell.swift; sourceTree = "<group>"; };
 		D204CC862AA9AB4700A216C3 /* AttributeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeViewController.swift; sourceTree = "<group>"; };
 		D204CC882AA9AB8800A216C3 /* VariantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariantViewController.swift; sourceTree = "<group>"; };
@@ -555,7 +555,7 @@
 		D2FAF7F22BBD67AD00B0B03B /* OrderStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatusViewController.swift; sourceTree = "<group>"; };
 		D2FDB5C22BCE575D005C4966 /* QuickveeApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickveeApp.entitlements; sourceTree = "<group>"; };
 		D2FFF1572AE924750074344D /* AddVarAttributeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVarAttributeCell.swift; sourceTree = "<group>"; };
-		F5018704A5E827D1E449932F /* Pods-QuickveeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickveeApp.release.xcconfig"; path = "Target Support Files/Pods-QuickveeApp/Pods-QuickveeApp.release.xcconfig"; sourceTree = "<group>"; };
+		EEFFBBD6B90E217806245727 /* Pods_QuickveeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickveeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -563,28 +563,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B2AF9EE7A3054C684E7BF38 /* Pods_QuickveeApp.framework in Frameworks */,
+				F0C9BD50979803211B7D7180 /* Pods_QuickveeApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		558B91D10D63DF13D9C64A27 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EEFFBBD6B90E217806245727 /* Pods_QuickveeApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A075720D16431750D125C8DE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				29FB7C80D48FCCE374B3BC73 /* Pods-QuickveeApp.debug.xcconfig */,
-				F5018704A5E827D1E449932F /* Pods-QuickveeApp.release.xcconfig */,
+				AADD739C252881782D2EFDF5 /* Pods-QuickveeApp.debug.xcconfig */,
+				92F779691D626909135EDE96 /* Pods-QuickveeApp.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		B0AEA8D30008A63E88817485 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6D13EA943F19A674E51499DE /* Pods_QuickveeApp.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D204E89F2A122A3D00EED5F5 /* Reporting */ = {
@@ -1081,7 +1081,7 @@
 				D2A6838B296C0B3700F852E6 /* QuickveeApp */,
 				D2A6838A296C0B3700F852E6 /* Products */,
 				A075720D16431750D125C8DE /* Pods */,
-				B0AEA8D30008A63E88817485 /* Frameworks */,
+				558B91D10D63DF13D9C64A27 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1256,20 +1256,20 @@
 		D2FFEF522AFDFFC7003400BD /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				D2EE03C42B3AB6CE001626DD /* PassCollectionViewCell.swift */,
-				D25996142AD3ABF70014AAEC /* PassCodeViewController.swift */,
-				D22260112B54E588009DC35A /* LockPassCodeViewController.swift */,
-				D2D5990F2C5B663500C2C1DA /* HomeCollectionViewCell.swift */,
-				D217914E296ECE0700F77C2A /* HomeViewController.swift */,
-				D213804329C9B3AA00022402 /* HomeTableViewCell.swift */,
-				D285ECE12A2ED914009DFAE5 /* Orders */,
 				D2664A7D2C5B86130009572F /* Customers */,
 				D2B20BC22C2C0FA500A5DDD2 /* Employee */,
+				D2D5990F2C5B663500C2C1DA /* HomeCollectionViewCell.swift */,
+				D213804329C9B3AA00022402 /* HomeTableViewCell.swift */,
+				D217914E296ECE0700F77C2A /* HomeViewController.swift */,
 				D20EE8352AA5F28A00762E56 /* Inventory */,
-				D2596AEF2D40C192009BCBE1 /* Station Settings */,
+				D22260112B54E588009DC35A /* LockPassCodeViewController.swift */,
 				D2596AEE2D40C12C009BCBE1 /* More */,
+				D285ECE12A2ED914009DFAE5 /* Orders */,
+				D25996142AD3ABF70014AAEC /* PassCodeViewController.swift */,
+				D2EE03C42B3AB6CE001626DD /* PassCollectionViewCell.swift */,
 				D204E89F2A122A3D00EED5F5 /* Reporting */,
 				D233C5762A11F27A000A5EEE /* Setup */,
+				D2596AEF2D40C192009BCBE1 /* Station Settings */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1371,13 +1371,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2A683A0296C0B3700F852E6 /* Build configuration list for PBXNativeTarget "QuickveeApp" */;
 			buildPhases = (
-				345DFADFD9459F5BE6E94F69 /* [CP] Check Pods Manifest.lock */,
+				724C1EA26E92C0F40E313548 /* [CP] Check Pods Manifest.lock */,
 				D2A68385296C0B3700F852E6 /* Sources */,
 				D2A68386296C0B3700F852E6 /* Frameworks */,
 				D2A68387296C0B3700F852E6 /* Resources */,
-				02D818BB358B6D411498DF3F /* [CP] Embed Pods Frameworks */,
-				45CB7C6C053F6DD9A23EB749 /* [CP] Copy Pods Resources */,
 				D215ECC42D925D3F00DE9620 /* ShellScript */,
+				CBE9C95839A13BB588CF0A87 /* [CP] Embed Pods Frameworks */,
+				FCC25F71F808293A3AF8AF50 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1450,24 +1450,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		02D818BB358B6D411498DF3F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-QuickveeApp/Pods-QuickveeApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-QuickveeApp/Pods-QuickveeApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuickveeApp/Pods-QuickveeApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		345DFADFD9459F5BE6E94F69 /* [CP] Check Pods Manifest.lock */ = {
+		724C1EA26E92C0F40E313548 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1489,21 +1472,25 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		45CB7C6C053F6DD9A23EB749 /* [CP] Copy Pods Resources */ = {
+		CBE9C95839A13BB588CF0A87 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-QuickveeApp/Pods-QuickveeApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-QuickveeApp/Pods-QuickveeApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-QuickveeApp/Pods-QuickveeApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-QuickveeApp/Pods-QuickveeApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuickveeApp/Pods-QuickveeApp-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuickveeApp/Pods-QuickveeApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D215ECC42D925D3F00DE9620 /* ShellScript */ = {
@@ -1527,6 +1514,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n\n";
+		};
+		FCC25F71F808293A3AF8AF50 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuickveeApp/Pods-QuickveeApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuickveeApp/Pods-QuickveeApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuickveeApp/Pods-QuickveeApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1927,14 +1935,14 @@
 		};
 		D2A683A1296C0B3700F852E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 29FB7C80D48FCCE374B3BC73 /* Pods-QuickveeApp.debug.xcconfig */;
+			baseConfigurationReference = AADD739C252881782D2EFDF5 /* Pods-QuickveeApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = QuickveeApp/QuickveeApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 11;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UDXGC872R6;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1955,7 +1963,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 2.9.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.merchantech;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1971,14 +1979,14 @@
 		};
 		D2A683A2296C0B3700F852E6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F5018704A5E827D1E449932F /* Pods-QuickveeApp.release.xcconfig */;
+			baseConfigurationReference = 92F779691D626909135EDE96 /* Pods-QuickveeApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = QuickveeApp/QuickveeAppRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 11;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UDXGC872R6;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1999,7 +2007,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 2.9.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.merchantech;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

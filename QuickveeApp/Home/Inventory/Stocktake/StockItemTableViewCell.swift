@@ -21,4 +21,7 @@ class StockItemTableViewCell: UITableViewCell {
     @IBOutlet weak var discrepancyValue: UILabel!
     
     @IBOutlet weak var disCostValue: UILabel!
+    
+    @IBOutlet weak var noteValue: UILabel!
+    
 }

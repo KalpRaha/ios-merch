@@ -1273,6 +1273,7 @@ class OrdersDetailViewController: UIViewController {
                                           discount_amt: "\(cartItem["discount_amt"] ?? "" )",
                                           discount_rate: "\(cartItem["discount_rate"] ?? "" )",
                                           adjust_price: "\(cartItem["adjust_price"] ?? "" )",
+                                          bogo_discount: "\(cartItem["bogo_discount"] ?? "" )",
                                           use_point: "\(cartItem["use_point"] ?? "" )",
                                           earn_point: "\(cartItem["earn_point"] ?? "" )",
                                           is_lottery: "\(cartItem["is_lottery"] ?? "" )",
@@ -2648,7 +2649,7 @@ struct IdentificationDetail {
 
 
 
-struct CartdataRef{
+struct CartdataRef {
     
     var line_item_id: String
     var variant_id: String
@@ -2675,6 +2676,7 @@ struct CartdataRef{
     var discount_amt: String
     var discount_rate: String
     var adjust_price: String
+    var bogo_discount: String
     var use_point: String
     var earn_point: String
     var is_lottery: String
@@ -2815,6 +2817,7 @@ struct Cart_Data {
     let note: String
     let userData: String
     let taxRates: String
+    let bogo_discount: String
     let default_tax_amount: String
     let other_taxes_amount: String
     let other_taxes_desc: String
@@ -2871,6 +2874,7 @@ struct CouponCode {
     
     let coupon_code: String
     let coupon_code_amt: String
+    let bogo_discount: String
     let loyalty_point_earned: String
     let loyalty_point_amt_earned: String
     let loyalty_point_amt_spent: String

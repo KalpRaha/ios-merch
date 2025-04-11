@@ -1221,6 +1221,7 @@ class OrderRefundDetailViewController: UIViewController {
                                           discount_amt: "\(cartItem["discount_amt"] ?? "" )",
                                           discount_rate: "\(cartItem["discount_rate"] ?? "" )",
                                           adjust_price: "\(cartItem["adjust_price"] ?? "" )",
+                                          bogo_discount: "\(cartItem["bogo_discount"] ?? "" )",
                                           use_point: "\(cartItem["use_point"] ?? "" )",
                                           earn_point: "\(cartItem["earn_point"] ?? "" )",
                                           is_lottery: "\(cartItem["is_lottery"] ?? "" )",
